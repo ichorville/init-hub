@@ -1,0 +1,98 @@
+<div *ngIf="type != 'Service Call'">
+  <div class="col-md-12">
+    <div class="btn-group" btnRadioGroup [(ngModel)]="eventActionType" style="width: inherit;">
+      <label 
+        *ngFor="let option of _ebs.actionTypes; let i = index" 
+        class="btn btn-info" 
+        btnRadio="{{option.value}}" 
+        (click)="onEventActionClick(option.key)"
+        uncheckable 
+        tabindex="0" 
+        role="button">
+        <i class="material-icons" style="font-size: 17px;">
+          {{option.icon}}
+        </i>
+      </label>
+    </div>
+  </div>
+  <div class="col-md-12" *ngIf="currentlySelected === 0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label style="margin-bottom: 0px;">Target Field</label>
+          <ng-select
+            [(ngModel)]="expression.targetControl"
+            [items]="_ebs.components"
+            bindLabel="componentName"
+            bindValue="componentKey"
+            appendTo="body">
+          </ng-select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" *ngIf="currentlySelected === 1">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label style="margin-bottom: 0px;">Target Field</label>
+          <ng-select
+            [(ngModel)]="expression.targetControl"
+            [items]="_ebs.components"
+            bindLabel="componentName"
+            bindValue="componentKey"
+            appendTo="body">
+          </ng-select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" *ngIf="currentlySelected === 2">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label style="margin-bottom: 0px;">Alert Type</label>
+          <ng-select
+            [(ngModel)]="expression.params"
+            [items]="alertTypes"
+            bindLabel="value"
+            bindValue="key"
+            appendTo="body">
+          </ng-select>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Message</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            [(ngModel)]="expression.content">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" *ngIf="currentlySelected === 3">
+    Validation
+  </div>
+  <div class="col-md-12" *ngIf="currentlySelected === 4">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label style="margin-bottom: 0px;">Show Form</label>
+          <ng-select
+            [(ngModel)]="expression.targetFormId"
+            [items]="_ebs.masterFormData"
+            bindLabel="fieldName"
+            bindValue="id"
+            appendTo="body">
+          </ng-select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="type === 'Service Call'">
+
+</div>
+

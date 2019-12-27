@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-12">
+    <mat-form-field  style="width:100%">
+      <mat-label>Select The Resource</mat-label>
+      <mat-select [(ngModel)]="selectedResourceType" (selectionChange)="onResourceChange($event)">
+        <mat-option *ngFor="let resource of referanceTypes" [value]="resource.value">
+          {{resource.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-12" *ngIf="showApiDropdown">
+    <ng-template #customItemTemplate let-model="item" let-index="index">
+      <h5>{{model.formName}} - {{ model.fieldName }}</h5>
+    </ng-template>
+    <input 
+      [(ngModel)]="asyncSelected"
+      [typeaheadAsync]="true"
+      [typeahead]="dataSource"
+      [typeaheadOptionsLimit]="7"
+      [typeaheadItemTemplate]="customItemTemplate"
+      typeaheadOptionField="fieldName"
+      (typeaheadOnSelect)="typeaheadOnSelect($event,'resourceBinding')"
+      placeholder="Select Field"
+      style="margin-top:10px"
+      class="form-control">
+  </div>
+  <div class="col-md-12" *ngIf="!showApiDropdown">
+    <ng-template #apiBindTemplate let-model="item" let-index="index">
+      <h5>{{ model.viewValue }}</h5>
+    </ng-template>
+    <input 
+      [(ngModel)]="selectedBinding"
+      [typeahead]="apiBindingSource"
+      [typeaheadItemTemplate]="apiBindTemplate"
+      typeaheadOptionField="viewValue"
+      typeaheadGroupField="type"
+      (typeaheadOnSelect)="typeaheadOnSelect($event,'fieldBinding')"
+      placeholder="Select Api Reference"
+      style="margin-top:10px"
+      class="form-control">
+  </div>
+</div>

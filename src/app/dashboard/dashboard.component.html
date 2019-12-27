@@ -1,0 +1,84 @@
+<div class="page-wrapper">
+	<div class="dashboard-header">
+		<div class="title-wrapper">
+			<h4>Form Builder</h4>
+			<h6>Create/Edit application pages and components</h6>
+		</div>
+		<!-- <button class="btn btn-default">Form History Demo</button> -->
+	</div>
+	<div class="dashboard-body">
+
+		<div class="d-flex">
+			<div class="col-md-3 px-0" (click)="showCreateFormModal(createFormModal)">
+				<mat-card class="d-flex align-items-center justify-content-between sub-card" style="margin-top:15px;">
+					<h5><span>Create</span><br>Dynamic Form</h5>
+					<i class="material-icons">
+						add_circle_outline
+					</i>
+				</mat-card>
+			</div>
+		</div>
+		<div>
+			<mat-card style="margin-top:15px;">
+				<mat-card-content>
+					<csi-form-selection-fab [POMR]="POMR"></csi-form-selection-fab>
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</div>
+<ng-template #createFormModal>
+	<div class="modal-header">
+		<h4 class="modal-title">Create New Form</h4>
+		<!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+			<span aria-hidden="true">&times;</span>
+		</button> -->
+		<div class="btn-wrapper">
+			<button class="btn btn-default mr-1" (click)="modalRef.hide()">Cancel</button>
+			<button class="btn btn-success ml-1" [disabled]="!_fgs.formName" (click)="createForm()">Create</button>
+		</div>
+	</div>
+	<div class="modal-body">
+		<div>
+			<div class="col-md-10 mx-auto">
+				<div class="form-group">
+					<label>Form Name</label>
+					<input type="text" class="form-control" [(ngModel)]="_fgs.formName">
+				</div>
+			</div>
+			<div class="col-md-10 mx-auto">
+				<div class="form-group">
+					<label class="mat-b0">Select Modules</label>
+					<ng-select multiple="true" [(ngModel)]="_fgs.formModules" [items]="_fgs.applicableModules"
+						bindLabel="name" bindValue="value">
+						<ng-template ng-optgroup-tmp let-item="item">
+							{{ item.name }}
+						</ng-template>
+					</ng-select>
+				</div>
+			</div>
+			<div class="col-md-10 mx-auto">
+				<div class="form-group">
+					<label class="mat-b0">Select Category</label>
+					<ng-select [(ngModel)]="_fgs.formCategory" [items]="_fgs.formCategories" bindLabel="name"
+						bindValue="value">
+						<ng-template ng-optgroup-tmp let-item="item">
+							{{ item.name }}
+						</ng-template>
+					</ng-select>
+				</div>
+			</div>
+			<div class="col-md-10 mx-auto">
+				<div class="form-group">
+					<label class="mat-b0">Form Save Option</label>
+					<select class="form-control" [(ngModel)]="_fgs.formSaveOption" (change)="onSaveOptionChanged($event)">
+					<option value="">SELECT OPTION</option>
+					<option value="PER_PATIENT">PER PATIENT</option>
+					<option value="PER_VISIT">PER VISIT</option>
+					<option value="PER_VISIT_MULTIPLE">PER MULTIPLE VISIT</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-template>

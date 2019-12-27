@@ -1,0 +1,70 @@
+::ng-deep #form-preview .gridster-item-inner {
+  position: absolute;
+  background: #fff;
+  border: 1px solid transparent;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  -webkit-transition: background 3s;
+  transition: background 3s;
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+::ng-deep #form-preview .gridster-item-inner .form-group label{
+font-size: 14px !important;
+}
+
+.modal-body {
+  /* min-height: calc(100vh - 150px); */
+  padding-bottom: 150px;
+}
+
+.modal-header .btn {
+  min-width: 125px;
+  min-height: 45px;
+}
+
+.sub-card {
+  min-height: 150px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #1f6ece;
+  color: #ffffff;
+}
+
+.sub-card > h5 {
+  margin-bottom: 0;
+  font-size: 24px;
+}
+
+.sub-card > h5 > span {
+  font-size: 16px;
+  font-weight: 400;
+}
+.sub-card > i {
+  font-size: 45px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-header > .title-wrapper h4 {
+  color: #3b444f;
+}
+
+.dashboard-header > .title-wrapper h6 {
+  color: #828282;
+}
+
+.dashboard-header > .btn {
+  min-width: 125px;
+  max-height: 45px;
+}
+
+ng-select {
+  font-size: 12px;
+}

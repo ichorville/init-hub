@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-3" style="padding-right: 0px;">
+    <!-- previous field list -->
+    <mat-card>
+      <tabset #staticTabs>
+        <tab heading="Forms">
+          <app-shared-list
+            [entityName]="'Form'"
+            [fileList]="formList"
+            [readOnly]="true"
+            (selectedItem)="addForm($event)">
+          </app-shared-list>
+        </tab>
+        <tab heading="Grids">
+          <app-shared-list
+            [entityName]="'Grid'"
+            [fileList]="gridList"
+            [readOnly]="true"
+            (selectedItem)="addGrid($event)">
+          </app-shared-list>
+        </tab>
+        <tab heading="Widgets">
+          
+        </tab>
+      </tabset>
+    </mat-card>
+  </div>
+  <div class="col-md-9" style="padding-left: 5px;">
+    <mat-card>
+      <app-screen-grid></app-screen-grid>
+    </mat-card>
+  </div>
+</div>

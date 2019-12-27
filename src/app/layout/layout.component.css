@@ -1,0 +1,107 @@
+.example-container {
+  height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  width: 20%;
+}
+
+.box-shadow {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+:host/deep/ .mat-toolbar-multiple-rows {
+  min-height: 58px !important;
+}
+
+:host/deep/ .mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 58px !important;
+}
+
+.toggle-btn:hover {
+  cursor: pointer;
+}
+
+.menu-icon {
+  position: relative;
+  top: 4px;
+}
+
+mat-list-item:hover {
+  background: lavender;
+  cursor: pointer;
+}
+
+:host/deep/ .mat-list-base {
+  padding-top: 58px;
+}
+
+.menu-item-heading {
+  position: absolute;
+  bottom: -15px;
+}
+
+.menu-item {
+  border-bottom: 1px solid #eee;
+}
+
+.menu-item:hover {
+  background: white !important;
+}
+
+.btn-group-fab {
+  position: fixed;
+  width: 50px;
+  height: auto;
+  z-index:1000000;
+  left: 20px; 
+  bottom: 20px;
+}
+.btn-group-fab div {
+  position: relative; width: 100%;
+  height: auto;
+}
+.btn-group-fab .btn {
+  position: absolute;
+  bottom: 0;
+  box-shadow: 0px 0px 5px 1px grey; 
+  border-radius: 50%;
+  display: block;
+  border-color: #3F51B5;
+  background: #3F51B5;
+  margin-bottom: 4px;
+  width: 40px; height: 40px;
+  margin: 4px auto;
+}
+.btn-group-fab .btn-main {
+  width: 50px; height: 50px;
+  right: 50%; margin-right: -25px;
+  z-index: 9;
+}
+.btn-group-fab .btn-sub {
+  bottom: 0; z-index: 8;
+  right: 50%;
+  margin-right: -20px;
+  -webkit-transition: all 2s;
+  transition: all 0.5s;
+}
+.btn-group-fab.active .btn-sub:nth-child(2) {
+  bottom: 60px;
+}
+.btn-group-fab.active .btn-sub:nth-child(3) {
+  bottom: 110px;
+}
+.btn-group-fab.active .btn-sub:nth-child(4) {
+  bottom: 160px;
+}
+.btn-group-fab .btn-sub:nth-child(5) {
+  bottom: 210px;
+}

@@ -1,0 +1,31 @@
+<div class="exp-builder-cont">
+
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label>Event</label>
+                <select class="form-control form-control-sm mr15" [(ngModel)]="selectedEventKey">
+                    <option value="click">On Click</option>
+                    <option value="change">On Change</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <button type="button" class="btn btn-level-2 btn-sm btn-success pro-add-btn" (click)="onClick_AddEventExp($event)">Add</button>
+            </div>
+        </div>
+        <div class="col-2">
+            <!-- <div class="form-group">
+                <button type="button" class="btn btn-level-2 btn-sm btn-success pro-add-btn" (click)="onClick_Save($event)">Save</button>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="comp-event-cont" *ngIf="fieldComponent != null">
+
+        <!-- <app-field-event-info *ngFor="let oName of fieldComponent.eventNames; index as i;" [eventExpression]="getEventExpressionModel(oName.key)"></app-field-event-info> -->
+        <app-field-event-info *ngFor="let oRule of fieldComponent.rules; index as i;" [eventExpression]="oRule"></app-field-event-info>
+
+    </div>
+</div>

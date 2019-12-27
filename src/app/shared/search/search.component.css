@@ -1,0 +1,56 @@
+/* :host/deep/.mat-form-field-placeholder {
+    color: #3f51b5;
+    font-size: smaller !important;
+    top: 32px;
+}
+:host/deep/.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder, .mat-form-field-empty.mat-form-field-placeholder {
+    color: transparent;
+}
+:host/deep/.mat-input-underline  {
+    background-color: #F1F1F1 !important;
+}
+
+:host/deep/.mat-form-field-infix {
+  font-size: 16px;
+  margin-top: -10px;
+}
+
+input[type="text"] {
+  font-size: 14px;
+} */
+
+/* #wrap {
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  padding: 0;
+  position: relative;
+}
+
+input[type="text"] {
+font-size: 18px !important; 
+  height: 35px;
+  font-size: 55px;
+  display: inline-block;
+  font-family: "Lato";
+  font-weight: 100;
+  border: none;
+  outline: none;
+  color: #555;
+  padding: 3px;
+  padding-right: 35px;
+  width: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  z-index: 3;
+  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  cursor: pointer;
+}
+
+input[type="text"]:focus {
+  width: 200px;
+  z-index: 1;
+  cursor: text;
+} */

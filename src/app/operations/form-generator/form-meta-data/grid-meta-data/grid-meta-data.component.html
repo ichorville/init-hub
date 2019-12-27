@@ -1,0 +1,78 @@
+<!-- Grid Properties -->
+<div class="row meta-header">
+  <div class="col-md-10">
+    <pre>Grid Properties</pre>
+  </div>
+  <div class="col-md-2">
+    <button (click)="respawnFormMetaData()" class="meta-bat-close">
+      <i class="material-icons" style="font-size: 12px;">close</i>
+    </button>
+  </div>
+  <div class="col-md-12">
+    <label class="pure-material-checkbox">
+      <input 
+        type="checkbox" 
+        [(ngModel)]="_fgs.widgets[currentIndex].controlContent['gridData'].showToolPanel"
+        (change)="_fgs.widgets[currentIndex].controlContent['gridData'].showToolPanel == !_fgs.widgets[currentIndex].controlContent['gridData'].showToolPanel">
+      <span>Show Tool Panel</span>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label class="pure-material-checkbox">
+      <input 
+        type="checkbox" 
+        [(ngModel)]="_fgs.widgets[currentIndex].controlContent['gridData'].singleClickEdit"
+        (change)="_fgs.widgets[currentIndex].controlContent['gridData'].singleClickEdit == !_fgs.widgets[currentIndex].controlContent['gridData'].singleClickEdit">
+      <span>Single Click Edit</span>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label class="pure-material-checkbox">
+      <input 
+        type="checkbox" 
+        [(ngModel)]="_fgs.widgets[currentIndex].controlContent['gridData'].enableColResize"
+        (change)="_fgs.widgets[currentIndex].controlContent['gridData'].enableColResize == !_fgs.widgets[currentIndex].controlContent['gridData'].enableColResize">
+      <span>Enable Colunm Resizing</span>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label class="pure-material-checkbox">
+      <input 
+        type="checkbox" 
+        [(ngModel)]="_fgs.widgets[currentIndex].controlContent['gridData'].floatingFilter"
+        (change)="_fgs.widgets[currentIndex].controlContent['gridData'].floatingFilter == !_fgs.widgets[currentIndex].controlContent['gridData'].floatingFilter">
+      <span>Floating Filter</span>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label class="pure-material-checkbox">
+      <input 
+        type="checkbox" 
+        [(ngModel)]="_fgs.widgets[currentIndex].controlContent['gridData'].enableSorting"
+        (change)="_fgs.widgets[currentIndex].controlContent['gridData'].enableSorting == !_fgs.widgets[currentIndex].controlContent['gridData'].enableSorting">
+      <span>Enable Sorting</span>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label class="pure-material-checkbox">
+      <input 
+        type="checkbox" 
+        [(ngModel)]="_fgs.widgets[currentIndex].controlContent['gridData'].enableFilter"
+        (change)="_fgs.widgets[currentIndex].controlContent['gridData'].enableFilter == !_fgs.widgets[currentIndex].controlContent['gridData'].enableFilter">
+      <span>Enable Filter</span>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label class="pure-material-checkbox">
+      <input 
+        type="checkbox" 
+        [(ngModel)]="_fgs.widgets[currentIndex].controlContent['gridData'].enableSidebar"
+        (change)="_fgs.widgets[currentIndex].controlContent['gridData'].enableSidebar == !_fgs.widgets[currentIndex].controlContent['gridData'].enableSidebar">
+      <span>Enable Sidebar</span>
+    </label>
+  </div>
+</div>
+  
+
+  
+  

@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-3" style="padding-right: 0px;">
+    <!-- previous field list -->
+    <mat-card>
+      <tabset #staticTabs>
+        <tab heading="Fields">
+          <app-shared-list [entityName]="'Field'" [fileList]="fieldList" [readOnly]="true" (selectedItem)="addField($event)">
+          </app-shared-list>
+        </tab>
+        <tab heading="Grids">
+          <app-shared-list [entityName]="'Grid'" [fileList]="gridList" [readOnly]="true" (selectedItem)="addGrid($event)">
+          </app-shared-list>
+        </tab>
+      </tabset>
+    </mat-card>
+  </div>
+  <div class="col-md-9" style="padding-left: 5px;">
+    <mat-card>
+      <div class="row">
+        <div class="col-md-6" style="border-bottom: 1px dashed #eee; max-height: 45px;">
+          <mat-form-field style="top: -10px;">
+            <input matInput placeholder="Grid Name" value="" [(ngModel)]="gridName">
+          </mat-form-field>
+          <span style="flex: 1 1 auto;"></span>
+        </div>
+        <div class="col-md-6" style="text-align: end; border-bottom: 1px dashed #eee;">
+          <button mat-raised-button style="width: 100px;" (click)="save()">Save</button>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 5px; padding-top: 12px;">
+          <div class="row">
+            <div class="col-md-12" style="border-bottom: 1px solid #eee; margin-bottom: 12px;">
+              <span>Selected Fields: {{ selectedFields.length }}</span>
+            </div>
+            <div class="col-md-12">
+              <mat-chip-list>
+                <mat-chip *ngFor="let field of selectedFields">
+                  {{ field.label }}
+                  <span class="cancel-icon" (click)="removeField(field)">
+                    <i class="material-icons clear-icon">clear</i>
+                  </span>
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+            <div class="col-md-12" style="border-bottom: 1px solid #eee; margin-bottom: 12px; padding-top: 5px;">
+              <span>Select Actions</span>
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox [(ngModel)]="editable">Edit</mat-checkbox>
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox [(ngModel)]="deletable">Delete</mat-checkbox>
+            </div>
+            <div class="col-md-8">
+              <span>Define More Actions ....</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

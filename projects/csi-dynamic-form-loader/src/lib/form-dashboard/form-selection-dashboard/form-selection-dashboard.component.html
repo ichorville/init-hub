@@ -1,0 +1,142 @@
+W<!-- <div class="modal-header">
+  <h4 class="modal-title pull-left" style="width: 100%">{{formName}}</h4>
+  <button type="button" class="btn btn-dark" [disabled]="(csiDynamicFormComp?.formData?.dynamicFormDataAudit.length <= 0)" (click)="showAudits()">Audits</button>
+  <button type="button" class="btn btn-success" [disabled]="!csiDynamicFormComp?.form.valid" (click)="saveForm()">Save</button>
+  <button type="button" class="btn btn-primary" aria-label="Close" (click)="closeModal()">Close</button>
+</div>
+<div class="modal-body">
+  <div class="col-4">
+    <pre>Selected : {{selectedForm?.formName}}</pre>
+    <li *ngFor="let form of formsInModule" style="cursor: pointer">
+      <span (click)="selectUsedForm(form)">{{form.fieldName}}</span>
+    </li>
+  </div>
+  <div class="col-8" style="background-color: #0ad426">
+  <csi-dynamic-form
+    #csiDynamicForm
+    *ngIf="widgets"
+    [previewMode]="previewMode"
+    [formElements]="widgets"
+    [gridAvailability]="gridAvailable"
+    [saveOption]="saveOption"
+    [apiContext]="apiContext"
+    [formID]="formId"
+    [title]="formName">
+  </csi-dynamic-form>
+  </div>
+</div>
+<div class="modal-footer"> 
+
+</div> -->
+
+
+<section class="dynamicForm">
+
+  <!-- Dynamic Form Header Section -->
+  <div class="dynamicForm__header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 dynamicForm__header--wrapper">
+          <div class="dynamicForm__header--left">
+            <i class="fi flaticon-dashboard"></i>
+          </div>
+          <div class="dynamicForm__header--right">
+            <h1><strong>Dynamic</strong> Form Dashboard</h1>
+            <div class="dynamicForm__header--notification">
+              <span class="notification-count">{{formsInModule?.length}}</span>
+              <span class="notification-title">Dynamic form in total</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 dynamicForm__header--wrapper right" style="padding-left: 0;">
+          <div class="search-wrapper">
+            <input type="text" placeholder="Search" [(ngModel)]="search" (keyup)="searchForm($event)">
+            <i class="fi flaticon-search"></i>
+          </div>
+          <div class="filter-wrapper">
+            <h6>Filter By:</h6>
+            <span class="filter-item filter-item--recentlyUsed">Recently Used</span>
+            <span class="filter-item filter-item--favourites">Favourites</span>
+            <span class="filter-item filter-item--catergory">Catergory</span>
+            <button>Clear</button>
+          </div>
+          <div class="action-toolbar">
+            <button type="button" class="btn btn-default" aria-label="Close" (click)="closeModal()">Close</button>
+            <button type="button" class="btn btn-dark"
+              [disabled]="(csiDynamicFormComp?.formData?.dynamicFormDataAudit.length <= 0)"
+              (click)="showAudits()">Audits</button>
+            <button type="button" class="btn btn-success" [disabled]="!csiDynamicFormComp?.form.valid"
+              (click)="saveForm()">Save Form</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Dynamic Form Body Section -->
+  <div class="dynamicForm__body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="dynamicForm__body--formTypes">
+            <div class="dynamicForm__body--left-wrapper">
+              <h6>Selected : {{selectedForm?.formName}}</h6>
+              <ul class="custom-dynamic-scroll">
+                <li *ngFor="let form of formsInModule" style="cursor: pointer" class="formList">
+                  <div (click)="selectUsedForm(form)" class="formList formList__item">
+                    <div class="formList__item--top">
+                      <h6>{{form.category}}</h6>
+                      <div class="formList-options">
+                        <i class="fi flaticon-star"></i>
+                        <i class="fi flaticon-more"></i>
+                      </div>
+                    </div>
+                    <div class="formList__item--mid">
+                      <h4>{{form.formName}}</h4>                      
+                      <span *ngIf="form.createdDateTime">Updated: <strong>{{form.createdDateTime ? (form.createdDateTime | amTimeAgo):''}}</strong></span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="dynamicForm__navigation-toolbar">
+              <p><span>08</span>of<span>25</span> Widgets showing</p>
+              <div class="dynamicForm__navigation-toolbar--options">
+                <i class="fi flaticon-refresh"></i>
+                <i class="fi flaticon-arrow-1"></i>
+                <i class="fi flaticon-keyboard-right-arrow-button"></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-9" style="padding-left: 0;">
+          <div class="dynamicForm__body--right-wrapper custom-dynamic-scroll">
+            <!-- <div class="dynamicForm__body--header">
+              <h2>{{formName}}</h2>
+              <p>Last Updated by Nurse Jane Carry at 9:30am Today</p>
+            </div> -->
+            <div class="form-preview-preloader" *ngIf="!widgets && selectedForm">
+              <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+              </div>
+              <p>Loading Form...</p>
+            </div>
+            <div class="dynamicForm__body--content">
+              <csi-dynamic-form #csiDynamicForm *ngIf="widgets" [previewMode]="previewMode" [formElements]="widgets"
+                [gridAvailability]="gridAvailable" [apiContext]="apiContext" [formID]="formId" [title]="formName"
+                [saveOption]="saveOption">
+              </csi-dynamic-form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

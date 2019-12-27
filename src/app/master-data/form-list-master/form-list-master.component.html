@@ -1,0 +1,38 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <div class="page-intro">
+      <div class="page-title">Form List</div>
+      <div class="page-last-update">Create/Edit application pages and components</div>
+    </div>
+    <!-- <div class="page-actions">
+      <button class="btn btn-default">Form History Demo</button>
+      <button class="btn btn-default">Create New</button>
+    </div> -->
+  </div>
+  <section class="content-section">
+    <div class="separated-section">
+      <div class="search-filter-section">
+        <div class="search-section">
+          <div class="input-group search-input-group">
+            <app-search [terms]="searchTerms" [placeHolder]="'Search List'" [searchSpecifics]="'fieldName'"
+              (onFilter)="searchResult($event)">
+            </app-search>
+          </div>
+        </div>
+        <div class="filter-section">
+          <label for="">Filter by Type</label>
+          <ul class="filter-list">
+            <li class="filter-list--page">Page</li>
+            <li class="filter-list--component">Component</li>
+          </ul>
+          <a href="" class="">Clear All</a>
+        </div>
+      </div>
+      <app-simple-datatable *ngIf="loadingCompleted" [isAddable]="true" [isSearchable]="true" [isMultiSelect]="true"
+        [isEditable]="true" [isDeletable]="true" [rows]="rows" [columns]="columns" [formElements]="formElements"
+        [title]="title" (onLoad)="onLoad($event)" (onAdd)="add($event)" (onEdit)="update($event)"
+        (onDelete)="delete($event)">
+      </app-simple-datatable>
+    </div>
+  </section>
+</div>

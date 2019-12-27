@@ -1,0 +1,328 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 20/08/2019 08:50
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("/src/styles/font/Flaticon.eot");
+  src: url("/src/styles/font/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("/src/styles/font/Flaticon.woff2") format("woff2"),
+       url("/src/styles/font/Flaticon.woff") format("woff"),
+       url("/src/styles/font/Flaticon.ttf") format("truetype"),
+       url("/src/styles/font/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("/src/styles/font/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-arrow-down:before { content: "\f100"; }
+.flaticon-keyboard-right-arrow-button:before { content: "\f101"; }
+.flaticon-search:before { content: "\f102"; }
+.flaticon-menu:before { content: "\f103"; }
+.flaticon-musical-bell-outline:before { content: "\f104"; }
+.flaticon-heart:before { content: "\f105"; }
+.flaticon-down-arrow:before { content: "\f106"; }
+.flaticon-correct:before { content: "\f107"; }
+.flaticon-close:before { content: "\f108"; }
+.flaticon-close-1:before { content: "\f109"; }
+.flaticon-avatar:before { content: "\f10a"; }
+.flaticon-geometry:before { content: "\f10b"; }
+.flaticon-settings:before { content: "\f10c"; }
+.flaticon-star:before { content: "\f10d"; }
+.flaticon-star-1:before { content: "\f10e"; }
+.flaticon-display:before { content: "\f10f"; }
+.flaticon-menu-1:before { content: "\f110"; }
+.flaticon-sort-down:before { content: "\f111"; }
+.flaticon-rounded-add-button:before { content: "\f112"; }
+.flaticon-refresh:before { content: "\f113"; }
+.flaticon-pencil:before { content: "\f114"; }
+.flaticon-copy:before { content: "\f115"; }
+.flaticon-arrow:before { content: "\f116"; }
+.flaticon-arrow-1:before { content: "\f117"; }
+.flaticon-delete:before { content: "\f118"; }
+.flaticon-calendar:before { content: "\f119"; }
+.flaticon-clock:before { content: "\f11a"; }
+.flaticon-spreadsheet:before { content: "\f11b"; }
+.flaticon-printer:before { content: "\f11c"; }
+.flaticon-eye:before { content: "\f11d"; }
+.flaticon-danger:before { content: "\f11e"; }
+.flaticon-bed:before { content: "\f11f"; }
+.flaticon-minimize:before { content: "\f120"; }
+.flaticon-expand:before { content: "\f121"; }
+.flaticon-success:before { content: "\f122"; }
+.flaticon-other-gender:before { content: "\f123"; }
+.flaticon-fast-forward-double-right-arrows:before { content: "\f124"; }
+.flaticon-pdf-file-format-symbol:before { content: "\f125"; }
+.flaticon-excel:before { content: "\f126"; }
+.flaticon-csv-file-format-extension:before { content: "\f127"; }
+.flaticon-download:before { content: "\f128"; }
+.flaticon-woman:before { content: "\f129"; }
+.flaticon-user-male-black-shape:before { content: "\f12a"; }
+.flaticon-question:before { content: "\f12b"; }
+.flaticon-miscellaneous:before { content: "\f12c"; }
+.flaticon-plus-button:before { content: "\f12d"; }
+.flaticon-age:before { content: "\f12e"; }
+.flaticon-gender:before { content: "\f12f"; }
+.flaticon-folder:before { content: "\f130"; }
+.flaticon-save:before { content: "\f131"; }
+.flaticon-remove:before { content: "\f132"; }
+.flaticon-padlock:before { content: "\f133"; }
+.flaticon-news:before { content: "\f134"; }
+.flaticon-conversation:before { content: "\f135"; }
+.flaticon-timeline:before { content: "\f136"; }
+.flaticon-medical-history:before { content: "\f137"; }
+.flaticon-heartbeat:before { content: "\f138"; }
+.flaticon-headset:before { content: "\f139"; }
+.flaticon-shopping-list:before { content: "\f13a"; }
+.flaticon-cardiogram:before { content: "\f13b"; }
+.flaticon-clicker:before { content: "\f13c"; }
+.flaticon-information:before { content: "\f13d"; }
+.flaticon-more:before { content: "\f13e"; }
+.flaticon-bell:before { content: "\f13f"; }
+.flaticon-pencil-1:before { content: "\f140"; }
+.flaticon-add:before { content: "\f141"; }
+.flaticon-add-1:before { content: "\f142"; }
+.flaticon-plus:before { content: "\f143"; }
+.flaticon-report:before { content: "\f144"; }
+.flaticon-tick:before { content: "\f145"; }
+.flaticon-check:before { content: "\f146"; }
+.flaticon-name:before { content: "\f147"; }
+.flaticon-technical-support:before { content: "\f148"; }
+.flaticon-folder-1:before { content: "\f149"; }
+.flaticon-stationery:before { content: "\f14a"; }
+.flaticon-logout:before { content: "\f14b"; }
+.flaticon-accept:before { content: "\f14c"; }
+.flaticon-blockchain:before { content: "\f14d"; }
+.flaticon-dental:before { content: "\f14e"; }
+.flaticon-text:before { content: "\f14f"; }
+.flaticon-dictionary:before { content: "\f150"; }
+.flaticon-gear:before { content: "\f151"; }
+.flaticon-list:before { content: "\f152"; }
+.flaticon-dashboard:before { content: "\f153"; }
+.flaticon-bookmark:before { content: "\f154"; }
+.flaticon-friend:before { content: "\f155"; }
+.flaticon-problem:before { content: "\f156"; }
+.flaticon-timer:before { content: "\f157"; }
+.flaticon-data-spreadsheet:before { content: "\f158"; }
+.flaticon-book:before { content: "\f159"; }
+.flaticon-flask:before { content: "\f15a"; }
+.flaticon-three-test-tubes:before { content: "\f15b"; }
+.flaticon-microscope:before { content: "\f15c"; }
+.flaticon-track:before { content: "\f15d"; }
+.flaticon-management:before { content: "\f15e"; }
+.flaticon-icon:before { content: "\f15f"; }
+.flaticon-users:before { content: "\f160"; }
+.flaticon-networking:before { content: "\f161"; }
+.flaticon-injury:before { content: "\f162"; }
+.flaticon-prescription:before { content: "\f163"; }
+.flaticon-prescription-1:before { content: "\f164"; }
+.flaticon-lovemaking:before { content: "\f165"; }
+.flaticon-band-aid:before { content: "\f166"; }
+.flaticon-nurse:before { content: "\f167"; }
+.flaticon-undo:before { content: "\f168"; }
+.flaticon-fast:before { content: "\f169"; }
+.flaticon-transgender:before { content: "\f16a"; }
+.flaticon-line-graph:before { content: "\f16b"; }
+.flaticon-weight-scale:before { content: "\f16c"; }
+.flaticon-icon-1:before { content: "\f16d"; }
+.flaticon-siren:before { content: "\f16e"; }
+.flaticon-lungs:before { content: "\f16f"; }
+.flaticon-experiment-results:before { content: "\f170"; }
+.flaticon-bed-1:before { content: "\f171"; }
+.flaticon-doctor:before { content: "\f172"; }
+.flaticon-broken-arm:before { content: "\f173"; }
+.flaticon-blood-pressure:before { content: "\f174"; }
+.flaticon-diskette:before { content: "\f175"; }
+.flaticon-lungs-1:before { content: "\f176"; }
+.flaticon-sphygmomanometer:before { content: "\f177"; }
+.flaticon-thermometer:before { content: "\f178"; }
+.flaticon-male-gender-symbol:before { content: "\f179"; }
+.flaticon-stretcher:before { content: "\f17a"; }
+.flaticon-woman-1:before { content: "\f17b"; }
+.flaticon-layout:before { content: "\f17c"; }
+.flaticon-examination:before { content: "\f17d"; }
+.flaticon-checklist:before { content: "\f17e"; }
+.flaticon-professions:before { content: "\f17f"; }
+.flaticon-injection:before { content: "\f180"; }
+.flaticon-pending:before { content: "\f181"; }
+.flaticon-clock-1:before { content: "\f182"; }
+.flaticon-glucose-meter:before { content: "\f183"; }
+.flaticon-list-1:before { content: "\f184"; }
+.flaticon-bell-1:before { content: "\f185"; }
+.flaticon-add-2:before { content: "\f186"; }
+.flaticon-minus:before { content: "\f187"; }
+.flaticon-fullscreen:before { content: "\f188"; }
+.flaticon-menu-2:before { content: "\f189"; }
+.flaticon-notifications-bell-button:before { content: "\f18a"; }
+.flaticon-full-screen-exit:before { content: "\f18b"; }
+.flaticon-menu-3:before { content: "\f18c"; }
+.flaticon-angle-arrow-down:before { content: "\f18d"; }
+.flaticon-up-arrow:before { content: "\f18e"; }
+.flaticon-logout-1:before { content: "\f18f"; }
+    
+    $font-Flaticon-arrow-down: "\f100";
+    $font-Flaticon-keyboard-right-arrow-button: "\f101";
+    $font-Flaticon-search: "\f102";
+    $font-Flaticon-menu: "\f103";
+    $font-Flaticon-musical-bell-outline: "\f104";
+    $font-Flaticon-heart: "\f105";
+    $font-Flaticon-down-arrow: "\f106";
+    $font-Flaticon-correct: "\f107";
+    $font-Flaticon-close: "\f108";
+    $font-Flaticon-close-1: "\f109";
+    $font-Flaticon-avatar: "\f10a";
+    $font-Flaticon-geometry: "\f10b";
+    $font-Flaticon-settings: "\f10c";
+    $font-Flaticon-star: "\f10d";
+    $font-Flaticon-star-1: "\f10e";
+    $font-Flaticon-display: "\f10f";
+    $font-Flaticon-menu-1: "\f110";
+    $font-Flaticon-sort-down: "\f111";
+    $font-Flaticon-rounded-add-button: "\f112";
+    $font-Flaticon-refresh: "\f113";
+    $font-Flaticon-pencil: "\f114";
+    $font-Flaticon-copy: "\f115";
+    $font-Flaticon-arrow: "\f116";
+    $font-Flaticon-arrow-1: "\f117";
+    $font-Flaticon-delete: "\f118";
+    $font-Flaticon-calendar: "\f119";
+    $font-Flaticon-clock: "\f11a";
+    $font-Flaticon-spreadsheet: "\f11b";
+    $font-Flaticon-printer: "\f11c";
+    $font-Flaticon-eye: "\f11d";
+    $font-Flaticon-danger: "\f11e";
+    $font-Flaticon-bed: "\f11f";
+    $font-Flaticon-minimize: "\f120";
+    $font-Flaticon-expand: "\f121";
+    $font-Flaticon-success: "\f122";
+    $font-Flaticon-other-gender: "\f123";
+    $font-Flaticon-fast-forward-double-right-arrows: "\f124";
+    $font-Flaticon-pdf-file-format-symbol: "\f125";
+    $font-Flaticon-excel: "\f126";
+    $font-Flaticon-csv-file-format-extension: "\f127";
+    $font-Flaticon-download: "\f128";
+    $font-Flaticon-woman: "\f129";
+    $font-Flaticon-user-male-black-shape: "\f12a";
+    $font-Flaticon-question: "\f12b";
+    $font-Flaticon-miscellaneous: "\f12c";
+    $font-Flaticon-plus-button: "\f12d";
+    $font-Flaticon-age: "\f12e";
+    $font-Flaticon-gender: "\f12f";
+    $font-Flaticon-folder: "\f130";
+    $font-Flaticon-save: "\f131";
+    $font-Flaticon-remove: "\f132";
+    $font-Flaticon-padlock: "\f133";
+    $font-Flaticon-news: "\f134";
+    $font-Flaticon-conversation: "\f135";
+    $font-Flaticon-timeline: "\f136";
+    $font-Flaticon-medical-history: "\f137";
+    $font-Flaticon-heartbeat: "\f138";
+    $font-Flaticon-headset: "\f139";
+    $font-Flaticon-shopping-list: "\f13a";
+    $font-Flaticon-cardiogram: "\f13b";
+    $font-Flaticon-clicker: "\f13c";
+    $font-Flaticon-information: "\f13d";
+    $font-Flaticon-more: "\f13e";
+    $font-Flaticon-bell: "\f13f";
+    $font-Flaticon-pencil-1: "\f140";
+    $font-Flaticon-add: "\f141";
+    $font-Flaticon-add-1: "\f142";
+    $font-Flaticon-plus: "\f143";
+    $font-Flaticon-report: "\f144";
+    $font-Flaticon-tick: "\f145";
+    $font-Flaticon-check: "\f146";
+    $font-Flaticon-name: "\f147";
+    $font-Flaticon-technical-support: "\f148";
+    $font-Flaticon-folder-1: "\f149";
+    $font-Flaticon-stationery: "\f14a";
+    $font-Flaticon-logout: "\f14b";
+    $font-Flaticon-accept: "\f14c";
+    $font-Flaticon-blockchain: "\f14d";
+    $font-Flaticon-dental: "\f14e";
+    $font-Flaticon-text: "\f14f";
+    $font-Flaticon-dictionary: "\f150";
+    $font-Flaticon-gear: "\f151";
+    $font-Flaticon-list: "\f152";
+    $font-Flaticon-dashboard: "\f153";
+    $font-Flaticon-bookmark: "\f154";
+    $font-Flaticon-friend: "\f155";
+    $font-Flaticon-problem: "\f156";
+    $font-Flaticon-timer: "\f157";
+    $font-Flaticon-data-spreadsheet: "\f158";
+    $font-Flaticon-book: "\f159";
+    $font-Flaticon-flask: "\f15a";
+    $font-Flaticon-three-test-tubes: "\f15b";
+    $font-Flaticon-microscope: "\f15c";
+    $font-Flaticon-track: "\f15d";
+    $font-Flaticon-management: "\f15e";
+    $font-Flaticon-icon: "\f15f";
+    $font-Flaticon-users: "\f160";
+    $font-Flaticon-networking: "\f161";
+    $font-Flaticon-injury: "\f162";
+    $font-Flaticon-prescription: "\f163";
+    $font-Flaticon-prescription-1: "\f164";
+    $font-Flaticon-lovemaking: "\f165";
+    $font-Flaticon-band-aid: "\f166";
+    $font-Flaticon-nurse: "\f167";
+    $font-Flaticon-undo: "\f168";
+    $font-Flaticon-fast: "\f169";
+    $font-Flaticon-transgender: "\f16a";
+    $font-Flaticon-line-graph: "\f16b";
+    $font-Flaticon-weight-scale: "\f16c";
+    $font-Flaticon-icon-1: "\f16d";
+    $font-Flaticon-siren: "\f16e";
+    $font-Flaticon-lungs: "\f16f";
+    $font-Flaticon-experiment-results: "\f170";
+    $font-Flaticon-bed-1: "\f171";
+    $font-Flaticon-doctor: "\f172";
+    $font-Flaticon-broken-arm: "\f173";
+    $font-Flaticon-blood-pressure: "\f174";
+    $font-Flaticon-diskette: "\f175";
+    $font-Flaticon-lungs-1: "\f176";
+    $font-Flaticon-sphygmomanometer: "\f177";
+    $font-Flaticon-thermometer: "\f178";
+    $font-Flaticon-male-gender-symbol: "\f179";
+    $font-Flaticon-stretcher: "\f17a";
+    $font-Flaticon-woman-1: "\f17b";
+    $font-Flaticon-layout: "\f17c";
+    $font-Flaticon-examination: "\f17d";
+    $font-Flaticon-checklist: "\f17e";
+    $font-Flaticon-professions: "\f17f";
+    $font-Flaticon-injection: "\f180";
+    $font-Flaticon-pending: "\f181";
+    $font-Flaticon-clock-1: "\f182";
+    $font-Flaticon-glucose-meter: "\f183";
+    $font-Flaticon-list-1: "\f184";
+    $font-Flaticon-bell-1: "\f185";
+    $font-Flaticon-add-2: "\f186";
+    $font-Flaticon-minus: "\f187";
+    $font-Flaticon-fullscreen: "\f188";
+    $font-Flaticon-menu-2: "\f189";
+    $font-Flaticon-notifications-bell-button: "\f18a";
+    $font-Flaticon-full-screen-exit: "\f18b";
+    $font-Flaticon-menu-3: "\f18c";
+    $font-Flaticon-angle-arrow-down: "\f18d";
+    $font-Flaticon-up-arrow: "\f18e";
+    $font-Flaticon-logout-1: "\f18f";

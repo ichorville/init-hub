@@ -1,0 +1,21 @@
+<mat-card>
+    <tabset #staticTabs
+    [ngClass]="{'tab-form-props': !expandSidbarMore , 'tab-content-resized':expandSidbarMore}">
+        <tab>
+            <ng-template tabHeading>
+                <mat-icon class="example-tab-icon">tune</mat-icon>
+            </ng-template>
+            <app-general-properties [widget]="currentWidget"></app-general-properties>
+            <button 
+            style="margin-top:10px; padding: 5px 12px; width:100%" 
+            class="btn btn-primary btn-sm"
+            (click)="save()">Save to fields</button>
+        </tab>
+        <tab>
+            <ng-template tabHeading>
+                <mat-icon class="example-tab-icon">settings</mat-icon>
+            </ng-template>
+            <app-advance-properties [widget]="currentWidget"></app-advance-properties>
+        </tab>
+    </tabset>
+</mat-card>

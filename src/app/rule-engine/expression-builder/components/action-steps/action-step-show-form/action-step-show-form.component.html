@@ -1,0 +1,12 @@
+<div>
+    <h6>Show</h6>
+    <div class="form-group">
+        <label>Target Form</label>
+        <select class="form-control form-control-sm" [(ngModel)]="targetControl">
+            <option value="-1">-- Please Select --</option>
+            <option *ngFor="let data of screens; index as i;" [value]="data[0]">
+                {{data[1]}}
+            </option>
+        </select>
+    </div>
+</div>

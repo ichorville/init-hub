@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="main-content" id="form-grid">
+			<ngx-gridster [options]="_fgs.gridsterOptions" [draggableOptions]="_fgs.gridsterDraggableOptions"
+				(optionsChange)="optionsChange($event)" #gridster1 class="dashboard">
+
+				<ngx-gridster-item *ngFor="let widget of _fgs.widgets; let indx = index"
+					[ngClass]="{'active-widget':widget.controlContent.label === selectedWidget}"
+					#itemComp [options]="itemOptions"
+					[dragAndDrop]="widget.dragAndDrop" [resizable]="widget.resizable" [(x)]="widget.x" [(y)]="widget.y"
+					[(xSm)]="widget.xSm" [(ySm)]="widget.ySm" [(xMd)]="widget.xMd" [(yMd)]="widget.yMd"
+					[(xLg)]="widget.xLg" [(yLg)]="widget.yLg" [(xXl)]="widget.xXl" [(yXl)]="widget.yXl" [(w)]="widget.w"
+					[(h)]="widget.h" [(wSm)]="widget.wSm" [(hSm)]="widget.hSm" [(wMd)]="widget.wMd" [(hMd)]="widget.hMd"
+					[(wLg)]="widget.wLg" [(hLg)]="widget.hLg" [(wXl)]="widget.wXl" [(hXl)]="widget.hXl">
+					<div class="panel-heading">
+						<h5 class="panel-title">
+							{{ widget.content == "widget" ? widget.controlContent.widgetHeader : widget.content == "grid" ? widget.title : widget.content == "form" ? widget.title : widget.controlContent.label }}
+						</h5>
+					</div>
+
+					<div class="panel-heading">
+						<div style="margin:3px auto">
+							<span class="field-clone ico-duplicate" (click)="duplicateField(indx, widget)"
+								*ngIf="widget.content != 'grid'">
+								<i [ngStyle]="{'color': widget.duplicatedFromPrevious == true ? 'blue' : 'rgba(0,0,0,.87)'}"
+									class="clone-icon material-icons menu-icon">filter_none</i>
+							</span>
+							<span
+								*ngIf="widget.masterType === 'field'" 
+								class="field-clone ico-edit" (click)="onFieldClick(widget)">
+								<i class="removal-icon material-icons menu-icon">edit</i>
+							</span>
+							<span class="field-clone ico-delete" (click)="removeField($event, indx, gridster1)">
+								<i class="removal-icon material-icons menu-icon">delete</i>
+							</span>
+						</div>
+					</div>
+
+					<div class="panel-body">
+						<!-- <pre style="position: absolute; bottom: 0px; margin-bottom: 5px;"> {{ widget.content }} | {{ itemComp?.item?.x }} x {{ itemComp?.item?.y }} | {{ widget.wLg }} x {{ widget.hLg }}</pre> -->
+						<pre
+							style="position: absolute; bottom: 0px; margin-bottom: 0px; margin-left: -10px;">{{ widget.content }}</pre>
+					</div>
+				</ngx-gridster-item>
+			</ngx-gridster>
+		</div>
+	</div>
+</div>

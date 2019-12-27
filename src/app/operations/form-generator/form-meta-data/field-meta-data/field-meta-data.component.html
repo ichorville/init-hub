@@ -1,0 +1,149 @@
+<!-- Field Properties -->
+<div class="advance-prop-container">
+  <div class="row meta-header">
+    <div class="col-md-12">
+      <pre>Advance Properties</pre>
+    </div>
+    <!-- <div class="col-md-12">
+      <div class="form-group">
+        <label>Label Name</label>
+        <input type="text" class="form-control"
+          [disabled]="!_fgs.widgets[currentIndex].duplicatedFromPrevious"  
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.label"
+          (keyup)="onLabelChange($event.target.value)">
+      </div>
+    </div> -->
+    <div class="col-md-12" *ngIf="_fgs.widgets[currentIndex].content === 'url' || _fgs.widgets[currentIndex].content==='email'">
+      <div class="form-group" >
+        <label>Error Message</label>
+        <input type="text" class="form-control"
+          placeholder="Type your error message for this control"  
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.errorMessage">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <label class="pure-material-checkbox">
+        <input 
+          type="checkbox" 
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.required"
+          (change)="_fgs.widgets[currentIndex].controlContent.required == !_fgs.widgets[currentIndex].controlContent.required">
+        <span>Mark as Mandatory</span>
+      </label>
+    </div>
+    <div *ngIf="fieldType === 'date' || fieldType === 'time'">
+      <div class="col-md-12" >
+        <label class="pure-material-checkbox">
+          <input 
+            type="checkbox" 
+            [(ngModel)]="_fgs.widgets[currentIndex].controlContent.disabled"
+            (change)="_fgs.widgets[currentIndex].controlContent.disabled == !_fgs.widgets[currentIndex].controlContent.disabled">
+          <span>Disable Mode</span>
+        </label>
+      </div>
+      <div class="col-md-12" *ngIf="fieldType === 'date'">
+        <label class="pure-material-checkbox">
+          <input 
+            type="checkbox" 
+            [(ngModel)]="_fgs.widgets[currentIndex].controlContent.currentDate"
+            (change)="_fgs.widgets[currentIndex].controlContent.currentDate == !_fgs.widgets[currentIndex].controlContent.currentDate">
+          <span>Set Current Date</span>
+        </label>
+      </div>
+      <div class="col-md-12" *ngIf="fieldType === 'time'">
+        <label class="pure-material-checkbox">
+          <input 
+            type="checkbox" 
+            [(ngModel)]="_fgs.widgets[currentIndex].controlContent.currentTime"
+            (change)="_fgs.widgets[currentIndex].controlContent.currentTime == !_fgs.widgets[currentIndex].controlContent.currentTime">
+          <span>Set Current Time</span>
+        </label>
+      </div>
+    </div>
+    <hr>
+    <div class="col-md-12">
+      <pre>Style Properties</pre>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Font Size</label>
+        <ng-select
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.fontSize"
+          [items]="fontSizes"
+          bindLabel="value"
+          bindValue="key"
+          (change)="onFontSizeChange($event)">
+        </ng-select>
+      </div>
+      <div class="form-group">
+        <label>Label Allignment</label>
+        <ng-select
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.labelAllignment"
+          [items]="allignments"
+          bindLabel="value"
+          bindValue="key"
+          (change)="onLabelAllignmentChange($event)">
+        </ng-select>
+      </div>
+      <div class="form-group">
+        <label>Text Allignment</label>
+        <ng-select
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.textAllignment"
+          [items]="allignments"
+          bindLabel="value"
+          bindValue="key"
+          (change)="onTextAllignmentChange($event)">
+        </ng-select>
+      </div>
+      <div class="form-group">
+        <label>Label Color</label>
+        <input type="color" class="form-control" 
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.labelColor">
+      </div>
+      <div class="form-group">
+        <label>Text Color</label>
+        <input type="color" class="form-control" 
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.textColor">
+      </div>
+    </div>
+    <hr>
+    <div class="col-md-12"> 
+      <label class="pure-material-checkbox">
+        <input 
+          type="checkbox" 
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.boldLabel"
+          (change)="_fgs.widgets[currentIndex].controlContent.boldLabel == !_fgs.widgets[currentIndex].controlContent.boldLabel">
+        <span>Bold Label</span>
+      </label>
+    </div>
+    <div class="col-md-12"> 
+      <label class="pure-material-checkbox">
+        <input 
+          type="checkbox" 
+          [(ngModel)]="_fgs.widgets[currentIndex].controlContent.boldText"
+          (change)="_fgs.widgets[currentIndex].controlContent.boldText == !_fgs.widgets[currentIndex].controlContent.boldText">
+        <span>Bold Text</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="data.controlContent.controlType === 'widgetItem'">
+  <div mat-dialog-content>
+    <pre>Widget Properties</pre>
+  </div>
+  <div class="row">
+    <div class="col-3" *ngFor="let input of data.controlContent.optionalInputs; let i = index;">
+        <div *ngIf="input.type=='text'">
+          <mat-form-field>
+            <input matInput [placeholder]="input.label">
+          </mat-form-field>
+        </div>
+        <div *ngIf="input.type=='checkbox'">
+          <mat-form-field>
+            <mat-checkbox *ngIf="input.type=='checkbox'">{{input.label}}</mat-checkbox>
+          </mat-form-field>
+        </div>
+    </div>
+  </div>
+</div> -->
+

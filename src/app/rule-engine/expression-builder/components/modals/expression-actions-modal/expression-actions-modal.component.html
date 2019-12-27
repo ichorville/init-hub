@@ -1,0 +1,94 @@
+<div class="modal-header">
+	<h4 class="modal-title pull-left">Actions</h4>
+</div>
+<div class="modal-body">
+
+	<div *ngIf="eventExpression != null">
+		<tabset>
+			<tab id="tabSuccuss">
+				<ng-template tabHeading>
+					<span>Success</span>
+				</ng-template>
+
+				<div>
+					<div class="row m-0 p-1">
+						<div class="col-sm-4 p-2">
+							<div class="row m-0 p-0">
+								<div class="col-sm-9 p-1">
+									<!-- <label >Search</label> -->
+									<div class="form-group">
+										<select class="form-control form-control-sm" [(ngModel)]="selectedNewActionKey_Success">
+											<option value="inapp">In App</option>
+											<option value="serviceCall">Service Call</option>
+										</select>
+
+										<!-- <input type="text" class="form-control" [(ngModel)]="searchValue" /> -->
+									</div>
+								</div>
+								<div class="col-sm-3 p-1">
+									<div class="form-group">
+										<button type="button" class="btn btn-sm btn-success" (click)="onClick_AddSuccessAction($event)">Add</button>
+									</div>
+								</div>
+							</div>
+
+							<app-expb-action-selector [actions]="eventExpression.success_actions" (select)="onSelect_SuccessAction($event)"></app-expb-action-selector>
+
+						</div>
+						<div class="col-sm-8 p-2 pl-4" style="border-left: 1px solid #eee;">
+							<div *ngIf="selectedAction_Success != null">
+								<app-expb-action-factory [actionData]="selectedAction_Success" ></app-expb-action-factory>
+							</div>
+						</div>
+					</div>
+				</div>
+			</tab>
+			<tab id="tabFail">
+				<ng-template tabHeading>
+					<span>Fail</span>
+				</ng-template>
+
+				<div>
+					<div class="row m-0 p-1">
+						<div class="col-sm-4 p-2">
+							<div class="row m-0 p-0">
+								<div class="col-sm-9 p-1">
+									<!-- <label >Search</label> -->
+									<div class="form-group">
+										<select class="form-control form-control-sm" [(ngModel)]="selectedNewActionKey_Fail">
+											<option value="inapp">In App</option>
+											<option value="serviceCall">Service Call</option>
+										</select>
+
+										<!-- <input type="text" class="form-control" [(ngModel)]="searchValue" /> -->
+									</div>
+								</div>
+								<div class="col-sm-3 p-1">
+									<div class="form-group">
+										<button type="button" class="btn btn-sm btn-success" (click)="onClick_AddFailAction($event)">Add</button>
+									</div>
+								</div>
+							</div>
+
+							<app-expb-action-selector [actions]="eventExpression.fail_actions" (select)="onSelect_FailAction($event)"></app-expb-action-selector>
+
+						</div>
+						<div class="col-sm-8 p-2 pl-4" style="border-left: 1px solid #eee;">
+							<div *ngIf="selectedAction_Fail != null">
+								<app-expb-action-factory [actionData]="selectedAction_Fail" ></app-expb-action-factory>
+							</div>
+						</div>
+					</div>
+				</div>
+			</tab>
+		</tabset>
+	</div>
+
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-success btn-sm" (click)="onClick_Done($event)" [disabled]="isLoading">Done</button>
+	<!-- <button type="button" class="btn btn-level-2 btn-sm" (click)="onClick_Close($event)" [disabled]="isLoading">Close</button> -->
+</div>
+<!-- <div *ngIf="isLoading">
+	<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div> -->

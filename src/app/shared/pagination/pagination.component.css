@@ -1,0 +1,62 @@
+.example-text {
+  font-size: 12px !important;
+  color: rgba(0, 0, 0, 0.54);
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.pager {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  list-style: none;
+}
+li {
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  list-style: none;
+  outline: none;
+}
+a {
+  cursor: pointer;
+  display: inline-block;
+  height: 22px;
+  min-width: 12px;
+  line-height: 22px;
+  border-radius: 3px;
+  margin: 6px 3px;
+  text-align: center;
+  vertical-align: top;
+  color: rgba(0, 0, 0, 0.54);
+  text-decoration: none;
+  vertical-align: bottom;
+  font-size: 12px;
+}
+.material-icons {
+  font-size: 20px;
+  line-height: 20px;
+  font-size: 18px;
+  padding: 0 3px;
+}
+.selected {
+  background: #5466c1 !important;
+  color: white !important;
+  padding: 0 6px;
+}
+.disabled {
+  color: rgba(0, 0, 0, 0.26) !important;
+  cursor: not-allowed !important;
+}
+mat-toolbar {
+  height: 45px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: #ffffff !important;
+  min-height: 0px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+mat-icon {
+  font-size: 18px;
+}

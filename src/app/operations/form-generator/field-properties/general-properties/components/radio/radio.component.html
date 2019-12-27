@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-common [widget]="widget" exclude="['placeholder']"></app-common>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <mat-checkbox class="example-margin" [(ngModel)]="isBindApiResource" (change)="onBindingOptionChanged()" color="primary">Bind API Resource ?</mat-checkbox>
+    <span *ngIf="currentWidget.selectedResource" class="span-change-api-res">
+      <a href="#" (click)="showOptionResourceBindingModal($event)">Change</a>
+    </span>
+  </div>
+  <div class="col-md-12">
+    <mat-checkbox class="example-margin" [(ngModel)]="currentWidget.inlineField" color="primary">Inline Field ?</mat-checkbox>
+  </div>
+</div>
+<div class="row" *ngIf="!isBindApiResource">
+  <div class="col-md-12">
+    <label>Options<span class="required-label">*</span></label>
+  </div>
+  <div class="col-md-12">
+    <label class="mat-b0">Key</label>
+    <input class="form-control" value="" [(ngModel)]="optionLabel">
+  </div>
+  <div class="col-md-12">
+    <label class="mat-b0">Value</label>
+    <input class="form-control" value="" [(ngModel)]="optionValue">
+  </div>
+  <div class="col-md-12">
+    <mat-checkbox class="example-margin" [(ngModel)]="enableOptionTextbox" color="primary">Add Text Field ?</mat-checkbox>
+  </div>
+  <div class="col-md-12">
+    <div *ngIf="enableOptionTextbox">
+      <label class="mat-b0">Option Textbox Label</label>
+      <input class="form-control" value="" [(ngModel)]="optionTextboxLabel">
+    </div>
+  </div>
+  <div class="col-md-12">
+    <button id="opt-add" style="width: 100%" class="btn btn-primary" (click)="addMoreOptions()">Add Option</button>
+  </div>
+  <div class="col-md-12">
+    <div style="overflow:auto; margin-top:5px; max-height: 200px;">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>Display Text</td>
+              <td>Value</td>
+              <td>Option Text</td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let value of optionList">
+              <td>{{ value.label }}</td>
+              <td>{{ value.value }}</td>
+              <td>{{ value.optionTextboxLabel }}</td>
+              <td class="option-col-action">
+                <i class="material-icons" (click)="editOption(value)">edit</i>
+                <i class="material-icons" (click)="removeOption(value)">remove</i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #resourceModal>
+  <div class="modal-header">
+    <h4>Resource Selection</h4>
+    <button type="button" class="close pull-right" style="color:black" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-option-resources 
+    [payload]="optionResourcePayload"
+    (onResourceChanged)="onResourceChanged($event)" 
+    (onDisplayChanged)="onDisplayChanged($event)" 
+    (onValueChanged)="onValueChanged($event)">
+    </app-option-resources>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="modalRef.hide()">Done</button>
+  </div>
+</ng-template>

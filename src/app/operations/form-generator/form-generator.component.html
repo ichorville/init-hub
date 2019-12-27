@@ -1,0 +1,214 @@
+<mat-toolbar>
+  <span>Form Builder <span *ngIf="_fgs.formName">-</span> </span>
+  <!-- <small>Last Updated by <a>Super Admin</a> at <a>9:30am Today</a></small> -->
+  <input class="pres-invisible-form-name" type="text" style="margin-top: 12px;" [(ngModel)]="_fgs.formName">
+
+  <div style="position: absolute; right:20px">
+    <!-- <button class="btn btn-default" [disabled]="_fgs.widgets.length == 0" (click)="isDesignView=!isDesignView">{{isDesignView?"Form View":"Design View"}}</button> -->
+    <button class="btn btn-default" [disabled]="_fgs.widgets.length == 0" (click)="viewGrid()">
+      {{ _fgs.gridsterOptions.lines.always == true ? 'Hide' : 'View' }} Grid
+    </button>
+    <button class="btn btn-default" [disabled]="_fgs.widgets.length == 0" (click)="openSettings()">Settings</button>
+    <button class="btn btn-default" [disabled]="_fgs.widgets.length == 0" (click)="removeAll()">Reset</button>
+    <button class="btn btn-default" [disabled]="_fgs.widgets.length == 0 || !isDesignView" (click)="showPreview()">Preview</button>
+    <button class="btn btn-success" [disabled]="_fgs.widgets.length == 0"
+      (click)="preSave()">{{ _fgs.formLoadedForEdit == true ? 'Update' : 'Save' }}</button>
+  </div>
+</mat-toolbar>
+
+<div class="toolbox-placeholder" style="left: 71px;" (click)="toggleTools()">
+  <div> 
+    <i class="material-icons">{{toolsBar.opened?"keyboard_arrow_left":"keyboard_arrow_right"}}</i>
+  </div>
+</div>
+
+<div class="toolbox-placeholder toolbox-right" (click)="toggleProps()">
+  <div>
+    <i class="material-icons">{{propsBar.opened?"keyboard_arrow_right":"keyboard_arrow_left"}}</i>
+  </div>
+</div>
+
+<mat-drawer-container class="example-container" autosize="true">
+  <mat-drawer mode="side" opened position="start" #toolsBar (openedChange)="sideBarStateChanged()">
+    <mat-card>
+      <tabset #staticTabs class="tab-form-tools">
+        <tab>
+          <ng-template tabHeading>
+            <i class="material-icons">dns</i>
+          </ng-template>
+          <app-form-add-field (onClicked)="onFieldClicked($event)"></app-form-add-field>
+        </tab>
+        <tab>
+          <ng-template tabHeading>
+            <i class="material-icons">list</i>
+          </ng-template>
+          <app-shared-list [entityName]="'Field'" [fileList]="fieldList" [readOnly]="true"
+            (selectedItem)="addField($event)">
+          </app-shared-list>
+        </tab>
+        <tab>
+          <ng-template tabHeading>
+            <i class="material-icons">grid_on</i>
+          </ng-template>
+          <app-shared-list [entityName]="'Grid'" [fileList]="gridList" [readOnly]="true"
+            (selectedItem)="addGrid($event)">
+          </app-shared-list>
+        </tab>
+        <tab>
+          <ng-template tabHeading>
+            <i class="material-icons">insert_drive_file</i>
+          </ng-template>
+          <app-shared-list [entityName]="'Form'" [fileList]="formList" [readOnly]="true"
+            (selectedItem)="addForm($event)">
+          </app-shared-list>
+        </tab>
+        <tab>
+          <ng-template tabHeading>
+            <i class="material-icons">layers</i>
+          </ng-template>
+          <app-shared-list [entityName]="'Component'" [fileList]="widgetList" [readOnly]="true"
+            (selectedItem)="addWidget($event)">
+          </app-shared-list>
+        </tab>
+        <!-- <tab>
+          <ng-template tabHeading>
+            <i class="material-icons">extension</i>
+          </ng-template>
+          <app-shared-list 
+            [entityName]="'UI Elements'" 
+            [fileList]="uiComponentList" 
+            [readOnly]="true" 
+            (selectedItem)="addUIElement($event)">
+          </app-shared-list>
+        </tab> -->
+      </tabset>
+    </mat-card>
+  </mat-drawer>
+  <mat-drawer-content style="background: gainsboro">
+    <mat-card style="margin:0px 10px;">
+      <app-field-grid 
+      #appFieldGridComp 
+      *ngIf="isDesignView"
+      (fieldRemoved)="onFieldRemoved($event)">
+      </app-field-grid>
+
+      <csi-dynamic-form
+        *ngIf="!isDesignView"
+        [title]="_fgs.formName"
+        [previewMode]="true"
+        [formElements]="_fgs.widgets"
+        resizable="true"
+        dragAndDrop="true"
+        (itemClicked)="onWidgetClicked($event)">  
+      </csi-dynamic-form>
+    </mat-card>
+  </mat-drawer-content>
+  <mat-drawer mode="side" position="end" #propsBar (openedChange)="sideBarStateChanged()">
+    <!-- [ngClass]="{'tab-form-props': !expandSidbarMore , 'tab-content-resized':expandSidbarMore}" -->
+    <app-field-properties></app-field-properties>
+    <!-- <mat-card>
+      <tabset #staticTabs
+      [ngClass]="{'tab-form-props': !expandSidbarMore , 'tab-content-resized':expandSidbarMore}">
+        <tab>
+          <ng-template tabHeading>
+            <mat-icon class="example-tab-icon">tune</mat-icon>
+          </ng-template>
+          <app-form-field-properties #fieldPropertiesComp></app-form-field-properties>
+        </tab>
+        <tab>
+          <ng-template tabHeading>
+            <mat-icon class="example-tab-icon">settings</mat-icon>
+          </ng-template>
+          <app-form-meta-data></app-form-meta-data>
+        </tab>
+      </tabset>
+    </mat-card> -->
+  </mat-drawer>
+</mat-drawer-container>
+
+<!-- <div class="container-fluid" style="margin-top:10px;">
+  <div class="row">
+    <div class="col-md-3" *ngIf="!hideToolPane">
+      <mat-card>
+        <tabset #staticTabs>
+          <tab>
+            <ng-template tabHeading>
+              <i class="material-icons">dns</i>
+            </ng-template>
+            <app-form-add-field (onClicked)="onFieldClicked($event)"></app-form-add-field>
+          </tab>
+          <tab>
+            <ng-template tabHeading>
+              <i class="material-icons">list</i>
+            </ng-template>
+            <app-shared-list 
+              [entityName]="'Field'" 
+              [fileList]="fieldList" 
+              [readOnly]="true" 
+              (selectedItem)="addField($event)">
+            </app-shared-list>
+          </tab>
+          <tab>
+            <ng-template tabHeading>
+              <i class="material-icons">grid_on</i>
+            </ng-template>
+            <app-shared-list 
+              [entityName]="'Grid'" 
+              [fileList]="gridList" 
+              [readOnly]="true" 
+              (selectedItem)="addGrid($event)">
+            </app-shared-list>
+          </tab>
+          <tab>
+            <ng-template tabHeading>
+              <i class="material-icons">insert_drive_file</i>
+            </ng-template>
+            <app-shared-list 
+              [entityName]="'Form'" 
+              [fileList]="formList" 
+              [readOnly]="true" 
+              (selectedItem)="addForm($event)">
+            </app-shared-list>
+          </tab>
+          <tab>
+            <ng-template tabHeading>
+              <i class="material-icons">layers</i>
+            </ng-template>
+            <app-shared-list 
+              [entityName]="'Components'" 
+              [fileList]="widgetList" 
+              [readOnly]="true" 
+              (selectedItem)="addWidget($event)">
+            </app-shared-list>
+          </tab>
+        </tabset>
+      </mat-card>
+    </div>
+    <div [ngClass]="{'col-md-8': hideToolPane, 'col-md-6': !hideToolPane}">
+      <mat-card>
+        <app-field-grid
+        (openRightNav)="openRightNav($event)"
+        (fieldRemoved)="onFieldRemoved($event)">
+        </app-field-grid>
+      </mat-card>
+    </div>
+    <div [ngClass]="{'col-md-4': hideToolPane, 'col-md-3': !hideToolPane}">
+      <mat-card>
+        <tabset #staticTabs>
+          <tab>
+            <ng-template tabHeading>
+              <mat-icon class="example-tab-icon">tune</mat-icon>
+            </ng-template>
+            <app-form-field-properties #fieldPropertiesComp></app-form-field-properties>
+          </tab>
+          <tab>
+            <ng-template tabHeading>
+              <mat-icon class="example-tab-icon">settings_applications</mat-icon>
+            </ng-template>
+            <app-form-meta-data></app-form-meta-data>
+          </tab>
+        </tabset>
+      </mat-card>
+    </div>
+  </div>
+</div> -->

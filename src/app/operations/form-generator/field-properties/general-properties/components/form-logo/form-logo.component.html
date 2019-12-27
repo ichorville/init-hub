@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-common [widget]="widget" exclude="['placeholder']"></app-common>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <label class="mat-b0">Height</label>
+    <input
+      class="form-control"
+      type="number"
+      [(ngModel)]="currentWidget.imageHeight">
+  </div>
+  <div class="col-md-12">
+    <label class="mat-b0">Width</label>
+    <input
+      class="form-control"
+      type="number"
+      [(ngModel)]="currentWidget.imageWidth">
+  </div>
+  <div class="col-md-12">
+    <label>Image Upload Type</label>
+    <mat-button-toggle-group (change)="onImageUploadTypeChanged($event)">
+      <mat-button-toggle value="URL" [checked]="currentWidget.formLogoUrl!=''?true:false">Upload With URL</mat-button-toggle>
+      <mat-button-toggle value="UPLOAD" [checked]="currentWidget.image!=''?true:false">Browse</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+
+<div class="row" style="margin-top:10px">
+  <div class="col-md-12">
+    <div *ngIf="imageUploadType==='URL'">
+      <input class="form-control" value="" placeholder="Image URL" style="margin-top:10px" [(ngModel)]="currentWidget.formLogoUrl">
+    </div>
+    
+    <div *ngIf="imageUploadType==='UPLOAD'">
+      <img *ngIf="currentWidget.image" 
+      [src]="selectedImage" 
+      [ngStyle]="{'width': '100%'}">
+      <input type="hidden" [(ngModel)]="currentWidget.image" >
+      <button 
+        style="margin-top: 10px;" 
+        class="btn btn-sm btn-primary" 
+        (click)="onImageButtonClicked($event)">
+        Browse
+        <span class="badge badge-secondary" *ngIf="currentWidget.image">Selected</span>
+      </button>
+      <input 
+        #imageFileInput
+        class="form-control"
+        type="file"
+        style="display: none"
+        (change)="onImageSelected($event)">
+    </div>
+  </div>
+    
+</div>

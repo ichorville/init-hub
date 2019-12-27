@@ -1,0 +1,16 @@
+::ng-deep .collapse.show {
+    min-height: fit-content;
+    overflow: unset !important;
+}
+
+label.btn.btn-info {
+	border: 1px solid #DFE1EA !important;
+	background: white;
+	color: #3D8CD7 !important;
+}
+
+label.btn.btn-info.active {
+	border-color: #3D8CD7 !important;
+	background-color: #3D8CD7 !important;
+	color: #fff !important;
+}

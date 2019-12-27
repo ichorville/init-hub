@@ -1,0 +1,41 @@
+@mixin btn-generator($bg-color, $border-color, $font-color) {
+  background: $bg-color;
+  border-color: $border-color;
+  color: $font-color;
+}
+
+.btn {
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 16px;
+
+  &.btn-default {
+    @include btn-generator(#fff, #ABC4DB, #547CA2);
+  }
+
+  &.btn-success {
+    @include btn-generator(#2ED573, #2ED573, #ffffff);
+  }
+
+  &.btn-x {
+    @include btn-generator(#AFBAC8, transparent, #fff);
+    border-radius: 50%;
+    line-height: 0;
+    font-size: 16px;
+    padding: 3px;
+
+    .material-icons {
+      font-size: inherit;
+      transform: rotate(0.03deg);
+    }
+  }
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:active:focus,
+  &:visited {
+    outline: none;
+    box-shadow: none;
+  }
+}

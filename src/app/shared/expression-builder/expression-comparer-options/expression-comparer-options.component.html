@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <!-- Other method selection -->
+      <select class="form-control form-control-sm" [(ngModel)]="inputType"
+        (change)="onChange($event.target.value)">
+        <option value="-1">-- Select Type --</option>
+        <option
+          *ngFor="let option of _ebs.eventTypes"
+          value="{{option.key}}">
+          {{option.value}}
+        </option>
+      </select>
+    </div>
+  </div>
+    <div class="col-md-12" *ngIf="inputType === 'ONE'">
+      <div class="form-group">
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          [(ngModel)]="inputValue"
+          (keyup)="onNumberChange($event.target.value)"/>
+      </div>
+    </div>
+    <div class="col-md-12" *ngIf="inputType === 'TWO'">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          [(ngModel)]="inputValue"
+          (keyup)="onNumberChange($event.target.value)"/>
+      </div>
+    </div>
+    <div class="col-md-12" *ngIf="inputType === 'THREE'">
+      <div class="form-group">
+        <select class="form-control form-control-sm" [(ngModel)]="inputValue"
+                (change)="onOtherFieldChange($event.target.value)">
+          <option
+            *ngFor="let option of _ebs.components"
+            value="{{option.componentKey}}">
+            {{option.componentName}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>

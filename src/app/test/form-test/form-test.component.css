@@ -1,0 +1,16 @@
+mat-card {
+    height: 88vh;
+}
+::ng-deep .mat-tab-header-pagination {
+    display: none !important;
+}
+::ng-deep .mat-tab-label {
+    min-width: 95px !important;
+}
+::ng-deep .nav-link {
+    padding: 0rem 1.7rem !important;
+}
+/* app-dynamic-form.dynamic-form .gridster-container {
+    max-height: 85vh;
+    overflow-y: scroll;
+} */

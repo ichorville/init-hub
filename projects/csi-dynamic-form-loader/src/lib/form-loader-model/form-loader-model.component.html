@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left" style="width: 100%">{{formName}}</h4>
+  <button type="button" class="btn btn-dark" [disabled]="(csiDynamicFormComp?.formData?.dynamicFormDataAudit.length <= 0)" (click)="showAudits()">Audits</button>
+  <button type="button" class="btn btn-success" [disabled]="!csiDynamicFormComp?.form.valid" (click)="saveForm()">Save</button>
+  <button type="button" class="btn btn-primary" aria-label="Close" (click)="closeModal()">Close</button>
+</div>
+<div class="modal-body">
+  <div class="form-preview-preloader" *ngIf="!widgets">
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+  </div>
+    <p>Loading Form...</p>
+  </div>
+  <csi-dynamic-form
+    #csiDynamicForm 
+    *ngIf="widgets" 
+    [previewMode]="previewMode"
+    [formElements]="widgets"
+    [gridAvailability]="gridAvailable"
+    [apiContext]="apiContext"
+    [formID]="formId"
+    [title]="formName"
+    [saveOption]="saveOption">
+  </csi-dynamic-form>
+</div>

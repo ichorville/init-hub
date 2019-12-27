@@ -1,0 +1,33 @@
+::ng-deep #form-preview .gridster-item-inner {
+	position: absolute;
+	background: #fff;
+	border: 1px solid transparent;
+	top: 5px;
+	bottom: 5px;
+	left: 5px;
+	right: 5px;
+	-webkit-transition: background 3s;
+	transition: background 3s;
+	border-radius: 3px;
+	box-shadow: none;
+}
+
+::ng-deep .modal-body {
+	overflow-y: scroll;
+	max-height: 94vh !important;
+}
+
+::ng-deep .modal-body::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+::ng-deep .modal-body::-webkit-scrollbar {
+	width: 0px;
+	background-color: #F5F5F5;
+}
+
+::ng-deep .modal-body::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #768294;
+}

@@ -1,0 +1,73 @@
+<div>
+  <!-- search filter -->
+  <app-search [terms]="searchTerms" [placeHolder]="placeholder" [searchSpecifics]="'label'"
+    (onFilter)="searchResult($event)">
+  </app-search>
+</div>
+<div *ngIf="!noResults">
+  <!-- listItem list -->
+  <div *ngFor="let listItem of filteredRows; let i = index" (click)="emitItem(listItem, i)">
+    <div class="field-row" [ngClass]="listItem.selected == true ? 'pers-list-item-active' : ''">
+      <span class="field-icon" *ngIf="entityName === 'Field'">
+        <i *ngIf="listItem.controlType === 'textBox'" class="material-icons menu-icon">short_text</i>
+        <i *ngIf="listItem.controlType === 'textArea'" class="material-icons menu-icon">subject</i>
+        <i *ngIf="listItem.controlType === 'number'" class="material-icons menu-icon">short_text</i>
+        <i *ngIf="listItem.controlType === 'dropdown'" class="material-icons menu-icon">arrow_drop_down_circle</i>
+        <i *ngIf="listItem.controlType === 'radio'" class="material-icons menu-icon">radio_button_checked</i>
+        <i *ngIf="listItem.controlType === 'checkbox'" class="material-icons menu-icon">check_box</i>
+        <i *ngIf="listItem.controlType === 'date'" class="material-icons menu-icon">event</i>
+        <i *ngIf="listItem.controlType === 'time'" class="material-icons menu-icon">access_time</i>
+        <i *ngIf="listItem.controlType === 'customText'" class="material-icons menu-icon">text_format</i>
+        <i *ngIf="listItem.controlType === 'email'" class="material-icons menu-icon">email</i>
+        <i *ngIf="listItem.controlType === 'color'" class="material-icons menu-icon">format_color_fill</i>
+        <i *ngIf="listItem.controlType === 'password'" class="material-icons menu-icon">lock</i>
+        <i *ngIf="listItem.controlType === 'range'" class="material-icons menu-icon">timeline</i>
+        <i *ngIf="listItem.controlType === 'image'" class="material-icons menu-icon">image</i>
+        <i *ngIf="listItem.controlType === 'imageUpload'" class="material-icons menu-icon">cloud_upload</i>
+        <i *ngIf="listItem.controlType === 'imageAnnotator'" class="material-icons menu-icon">picture_in_picture</i>
+        <i *ngIf="listItem.controlType === 'url'" class="material-icons menu-icon">http</i>
+        <i *ngIf="listItem.controlType === 'formLogo'" class="material-icons menu-icon">info</i>
+        <i *ngIf="listItem.controlType === 'textEditor'" class="material-icons menu-icon">border_color</i>
+        <i *ngIf="listItem.controlType === 'tabularEntry'" class="material-icons menu-icon">grid_on</i>
+      </span>
+      <span class="field-icon" style="padding-top:0px" *ngIf="entityName === 'Form'">
+        <i class="material-icons menu-icon">receipt</i>
+      </span>
+      <span class="field-meta-data">
+        <span class="field-header">{{ listItem.label || listItem.fieldName || listItem.gridName || listItem.widgetHeader || listItem.componentName || listItem.value }}</span>
+        <span class="field-type" *ngIf="entityName === 'Field'">{{ returnMetaText(listItem.controlType) }}</span>
+        <span class="field-type" *ngIf="entityName === 'Grid'">{{ listItem.selectedFiels.length }} Columns</span>
+        <span class="field-type" *ngIf="entityName === 'Form'">{{ listItem.count }}
+          {{ listItem.count > 1 ? ' Fields' : ' Field' }}</span>
+        <span class="field-type" *ngIf="entityName === 'Component'">{{ listItem.description }}</span>
+        <span class="field-type"
+          *ngIf="entityName === 'Rule'">{{ listItem.rules.length == 0 ? 'No Rules Available' : listItem.rules.length > 1 ? listItem.rules.length + ' Rules' : listItem.rules.length + ' Rule' }}</span>
+      </span>
+      <span style="flex: 1 1 auto;"></span>
+      <span *ngIf="!readOnly" class="field-remove" (click)="removeField(listItem, removeFieldTemplate)">
+        <i class="removal-icon material-icons menu-icon">delete</i>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="pagination-wrapper" *ngIf="!noResults">
+  <!-- for pagination purposes -->
+  <app-pagination *ngIf="isInit" [pages]="pages" [totalRows]="fileList.length" [selectedPage]="selectedPage"
+    (onPageClick)="paginate($event)">
+  </app-pagination>
+</div>
+<div *ngIf="noResults">
+  <span>No Fields</span>
+</div>
+
+<!-- remove fields config -->
+<ng-template #removeFieldTemplate>
+  <h1 mat-dialog-title>Confirmation</h1>
+  <div mat-dialog-content>
+    <p>Proceed with Field Removal - Field {{ toBeRemoved.label }}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No </button>
+    <button mat-button (click)="setRecordToRemove()" cdkFocusInitial>Yes</button>
+  </div>
+</ng-template>

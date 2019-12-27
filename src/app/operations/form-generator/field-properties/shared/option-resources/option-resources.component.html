@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <label class="mat-b0">Select Resource</label>
+      <ng-select
+        (change)="onResourceSelected($event)"
+        [(ngModel)]="selectedResource"
+        [items]="resourceTypes"
+        bindLabel="viewValue"
+        bindValue="value"
+        style="margin-bottom:10px">
+      </ng-select>
+    </div>
+  </div>
+  <div class="row" *ngIf="selectedResource == 'resources'">
+    <div class="col-md-4">
+      <div class="eq-hier">
+        <div class="eq-hier-header">Select Hierarchy</div>
+        <div *ngIf="selectedCategory;else other_content" class="alert alert-success">
+          <small>Selected Category: {{selectedCategory.name}}</small>
+        </div>
+        <div class="eq-hier-body" style="max-height:250px; overflow-x:hidden; overflow-y: scroll;">
+          <ng-template #other_content>
+            <div class="alert alert-danger" role="alert">
+              Please Select a Category
+            </div>
+          </ng-template>
+          <app-setup-tree
+            (selectedValue)="onSelect($event)"
+            [list]="items">
+          </app-setup-tree>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <csi-ag-grid
+        [csiaggridoptions]="gridOptions"
+        [csiaggridcolumn]="colDefs"
+        (griReadyEvent)="gridReadyEvent($event)"
+        style="width:100%;">
+      </csi-ag-grid>
+    </div>
+  </div>
+  <div class="row" *ngIf="(selectedResource == 'clinics' || selectedResource == 'agegroups' || selectedResource == 'procedures' || selectedResource == 'diagnosis')">
+    <div class="col-md-12">
+      <div class="division-mat-table tableFixHead" style="width: 100%; margin-top:10px; height:300px; overflow-y: auto">
+        <table class="table">
+          <thead style="background: #eee">
+            <th *ngFor="let header of resourcesColDefs">{{ header.headerName | titlecase }}</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of resourceData">
+              <td *ngFor="let col of resourcesColDefs">{{ data[col.field] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" style="border-bottom: 1px dashed #eee; padding-top: 10px;">
+      <label class="mat-b0">Select Display Property</label>
+      <ng-select
+        (change)="onDisplayPropertyChange($event)"
+        [(ngModel)]="selectedDisplayProperty"
+        [items]="objectProperties"
+        bindLabel="viewValue"
+        bindValue="value">
+      </ng-select>
+    </div>
+    <div class="col-md-6" style="border-bottom: 1px dashed #eee; padding-top: 10px;">
+      <label class="mat-b0">Select Value Property</label>
+      <ng-select
+        (change)="onValuePropertyChange($event)"
+        [(ngModel)]="selectedValueProperty"
+        [items]="objectProperties"
+        bindLabel="viewValue"
+        bindValue="value">
+      </ng-select>
+    </div>
+  </div>
+</div>

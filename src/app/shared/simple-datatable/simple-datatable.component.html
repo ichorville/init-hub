@@ -1,0 +1,93 @@
+<!-- Simple Datatable view -->
+<div class="Table" *ngIf="isValid">
+	<!-- Columns section -->
+	<div class="Table-row Table-header">
+		<span style="padding-left:38px;" *ngIf="isMultiSelect"></span>
+		<div class="Table-row-item cell" *ngFor="let column of columns">
+			{{ column.name }}
+		</div>
+		<div class="Table-row-item cell" *ngIf="isEditable || isNavigatable || isDeletable || isDownloadable">Actions</div>
+	</div>
+	<!-- Body section -->
+	<div class="Table-row" *ngFor="let row of filteredRows">
+		<mat-checkbox class="hidden-on-open mail-check" *ngIf="isMultiSelect"></mat-checkbox>
+		<div class="Table-row-item data-cell" attr.data-header="{{ column.name }}"
+			*ngFor="let column of columns" [ngSwitch]="column.type">
+			<span *ngSwitchCase="'string'">{{ row[column.attr] }}</span>
+			<!-- Status of chips -->
+			<span *ngSwitchCase="'chip'">
+				<mat-chip *ngIf="row[column.attr]" color="primary" selected="true">active</mat-chip>
+				<mat-chip *ngIf="!row[column.attr]" color="primary">inactive</mat-chip>
+			</span>
+			<span *ngSwitchCase="'button'" style="width: -webkit-fill-available;">
+				<button 
+					mat-raised-button 
+					style="font-size: 12px; width: 100%; line-height: 18px; 
+					top: -4px; font-weight: bold !important; border-style: solid; border-width: 2px;
+					border-radius: 4px; padding:0px;"
+					(click)="loadRowData(row)"
+					[ngClass]="{
+						'processed': row[column.attr] == 'Processed',
+						'ready_to_process': row[column.attr] == 'Ready to Process',
+						'add_to_system': row[column.attr] == 'Add to System'
+					}">
+					 {{ row[column.attr] }}
+				</button>
+			</span>
+		</div>
+		<div class="Table-row-item data-cell" style="padding-bottom:0px;padding-top:5px;"
+			data-header="Actions" *ngIf="isEditable || isNavigatable || isDeletable || isDownloadable">
+			<button mat-icon-button color="primary"
+				*ngIf="isEditable"
+				(click)="editRecord(row)">
+				<mat-icon>create</mat-icon>
+			</button>
+			<a mat-icon-button color="primary"
+				*ngIf="isNavigatable"
+				routerLink="/{{ url }}/{{ row.id }}/config"
+				routerLinkActive="active">
+				<mat-icon>create</mat-icon>
+			</a>
+			<!-- for serial management -->
+			<button mat-icon-button [matMenuTriggerFor]="menu"
+				*ngIf="isMultiDroppable">
+				<mat-icon>more_horiz</mat-icon>
+			</button>
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item>
+					<span>Download Invalid PINs</span>
+				</button>
+				<button mat-menu-item>
+					<span>Remove Invalid PINs</span>
+				</button>
+				<button mat-menu-item>
+					<span>Download Duplicates</span>
+				</button>
+				<button mat-menu-item>
+					<span>Remove Duplicates</span>
+				</button>
+			</mat-menu>
+			<button mat-icon-button color="warn"
+				*ngIf="isDeletable"
+				(click)="deleteRecord(row);">
+				<mat-icon>clear</mat-icon>
+			</button>
+			<button mat-icon-button color="warn"
+				*ngIf="isDownloadable"
+				(click)="downloadRecord(row['toBeDeleted']);">
+				<mat-icon>file_download</mat-icon>
+			</button>
+		</div>
+	</div>
+	<!-- Pagination Module -->
+	<app-pagination *ngIf="isInit"
+		[pages]="pages"
+		[totalRows]="rows.length"
+		[selectedPage]="selectedPage"
+		(onPageClick)="paginate($event)">
+	</app-pagination>
+</div>
+
+<mat-toolbar *ngIf="!isValid" style="background: whitesmoke" class="inbox-toolbar">
+	<span style="font-weight: 200; color:black;">No Matching Records Found</span>
+</mat-toolbar>	

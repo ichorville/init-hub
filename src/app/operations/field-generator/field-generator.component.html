@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-3" style="padding-right: 0px;">
+    <!-- previous field list -->
+    <mat-card>
+      <app-shared-list
+        [entityName]="'Field'"
+        [fileList]="fieldList"
+        [readOnly]="false"
+        (selectedItem)="editField($event)"
+        (removeFromList)="remove($event)">
+      </app-shared-list>
+    </mat-card>
+  </div>
+  <div class="col-md-9" style="padding-left: 5px;">
+    <!-- add new field setup -->
+    <mat-card style="overflow-y: scroll">
+      <app-field-add
+        [fieldList]="fieldList">
+      </app-field-add>
+    </mat-card>
+  </div>
+</div>

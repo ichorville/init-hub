@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-common [widget]="widget" exclude="['placeholder']"></app-common>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <p>Header Definitions</p>
+  </div>
+  <div class="col-md-12" style="margin-bottom:10px">
+    <ng-select
+      (change)="tabularFieldTypeChange($event)"
+      [items]="tabularFieldTypes"
+      placeholder="Select field type"
+      bindLabel="name"
+      bindValue="value">
+    </ng-select>
+  </div>
+  <div class="col-md-6" style="padding-right:5px">
+    <input type="text" class="form-control" [(ngModel)]="tabularFieldName" placeholder="Field Name">
+  </div>
+  <div class="col-md-6" style="padding-left: 5px;">
+    <input type="text" class="form-control" [(ngModel)]="tabularHeaderName" placeholder="Header Name">
+  </div>
+  <div class="col-md-12" style="margin-top: 10px">
+    <button class="btn btn-primary" style="width: 100%" (click)="addHeaderDefinition()">Add Header</button>
+  </div>
+  <div class="col-md-12">
+    <div style="width: 100%; margin-top:10px; height:200px; overflow-y: auto">
+        <table class="table table-bordered table-responsive">
+          <thead>
+            <th>Field Name</th>
+            <th>Header Name</th>
+            <th>Field Type</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let definition of currentWidget.headerDefinitions; let i=index;">
+              <td>{{definition.fieldName}}</td>
+              <td>{{definition.headerName}}</td>
+              <td>{{definition.fieldType}}</td>
+              <td>
+                <i class="material-icons" style="color: red; cursor: pointer;" (click)="removeDefinition(i)">highlight_off</i>
+              </td>
+            </tr>
+            <tr *ngIf="(tabularHeaderDefinitions.length<=0)">
+              <td colspan="4">No definitions found.</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

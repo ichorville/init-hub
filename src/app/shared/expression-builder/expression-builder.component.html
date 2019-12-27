@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-md-2">
+    <!-- rule component list -->
+    <app-shared-list
+      *ngIf="fieldSetLoaded"
+      [entityName]="'Rule'"
+      [fileList]="_ebs.components"
+      [readOnly]="true"
+      [markAsSelected]="markAsSelected"
+      (selectedItem)="generateExpressionMasterOptions($event)">
+    </app-shared-list>
+  </div>
+  <div class="col-md-7" *ngIf="ruleFieldSelected">
+    <div class="row">
+      <div class="col-md-12" id="pers-query-builder-scroll" *ngIf="queryBuilderLoaded">
+        <div class="row pers-query-builder" *ngFor="let expression of _ebs.fieldExpressions[currentFieldIndex].expressions; let i = index">
+          <div class="col-md-12"  style="display: flex; padding-top: 6px;">
+            <span class="pers-rule-event-chip">Rule #{{i + 1}}</span>
+            <span class="pers-rule-event-chip event-header" (click)="onEventClick(_ebs.fieldExpressions[currentFieldIndex], i)">{{expression.event | titlecase}} Event</span>
+            <span style="flex: 1 1 auto;"></span>
+            <button class="meta-bat-close" (click)="removeExpression(i)">
+              <i class="material-icons" style="font-size: 12px;">close</i>
+            </button>
+          </div>
+          <div class="col-md-12">
+            <!-- primary query builder with configuration -->
+            <query-builder
+              [(ngModel)]="expression.query"
+              [config]="_ebs.fieldExpressions[currentFieldIndex].queryBuilderConfig"
+              [classNames]="classNames">
+              <!-- other option type custom component -->
+             <!-- <ng-container
+                *queryInput="let rule; let field=field; let options=options; type: 'category'">
+                <div class="col">
+                &lt;!&ndash;  <app-expression-comparer-options
+                    [currentRule]="rule" [control]="selectedControl">
+                  </app-expression-comparer-options>&ndash;&gt;
+                </div>
+              </ng-container>-->
+            </query-builder>
+          </div>
+        </div>
+      </div>
+      <!-- field event radio buttons -->
+      <div class="col-md-12" style="padding-top: 10px; text-align: center;">
+        <div class="btn-group" btnRadioGroup [(ngModel)]="uncheckableRadioModel">
+          <label
+            *ngFor="let option of _ebs.fieldExpressions[currentFieldIndex].fieldExpressionOptions; let i = index;"
+            class="btn btn-info"
+            btnRadio="{{option}}"
+            (click)="onExpressionOptionClick(_ebs.fieldExpressions[currentFieldIndex], i)"
+            uncheckable
+            tabindex="0"
+            role="button">
+            {{option | titlecase}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 pers-expression-actions" *ngIf="ruleActionsProvoked">
+    <div class="row">
+      <div class="col-md-12" style="display: flex; justify-content: space-between; padding-bottom: 5px;">
+        <span class="pers-rule-event-chip">Rule #{{currentEventIndex + 1}}</span>
+        <span class="pers-rule-event-chip">Actions</span>
+      </div>
+      <!-- success/ fail action tab list -->
+      <div class="col-md-12">
+        <tabset #staticExpressionActionTabs (selectTab)="onExpressionActionCategoryChange($event)" class="pers-expression-actions">
+          <tab (selectTab)="setToSuccess($event)" [customClass]="'tabz-success-action'">
+            <ng-template class="success-header" tabHeading>Success</ng-template>
+            <accordion
+              [isAnimated]="true"
+              [closeOthers]="'true'">
+              <accordion-group
+                *ngFor="let expression of _ebs.fieldExpressions[currentFieldIndex].expressions[currentEventIndex].successActions; let i = index">
+                <button class="btn btn-link btn-block clearfix" accordion-heading>
+                  <div class="pull-left float-left">{{expression.type}}</div>
+                  <span class="float-right pull-right" style="position:relative; top:3px;">
+                    <button class="action-meta-bat-close" (click)="removeAction('success', i)">
+                      <i class="material-icons" style="font-size: 12px;">close</i>
+                    </button>
+                  </span>
+                </button>
+                <app-expression-action-options
+                  [type]="expression.type"
+                  [expression]="expression">
+                </app-expression-action-options>
+              </accordion-group>
+            </accordion>
+          </tab>
+          <tab (selectTab)="setToFail($event)" [customClass]="'tabz-fail-action'">
+            <ng-template tabHeading>Fail </ng-template>
+            <accordion
+              [isAnimated]="true"
+              [closeOthers]="'true'">
+              <accordion-group
+                *ngFor="let expression of _ebs.fieldExpressions[currentFieldIndex].expressions[currentEventIndex].failActions; let i = index">
+                <button class="btn btn-link btn-block clearfix" accordion-heading>
+                  <div class="pull-left float-left">{{expression.type}}</div>
+                  <span class="float-right pull-right" style="position:relative; top:3px;">
+                    <button class="action-meta-bat-close" (click)="removeAction('fail', i)">
+                      <i class="material-icons" style="font-size: 12px;">close</i>
+                    </button>
+                  </span>
+                </button>
+                <app-expression-action-options
+                  [type]="expression.type"
+                  [expression]="expression">
+                </app-expression-action-options>
+              </accordion-group>
+            </accordion>
+          </tab>
+        </tabset>
+      </div>
+      <!-- action type selection inapp/ service call -->
+      <div class="col-md-12" style="padding-top: 10px; text-align: center;">
+        <div class="btn-group" btnRadioGroup [(ngModel)]="actionType">
+          <label
+            *ngFor="let option of expressionActionTypes"
+            class="btn btn-info"
+            btnRadio="{{option.key}}"
+            (click)="onExpressionActionOptionClick(_ebs.fieldExpressions[currentFieldIndex], option.key, actionType)"
+            uncheckable
+            tabindex="0"
+            role="button">
+            {{option.value | titlecase}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

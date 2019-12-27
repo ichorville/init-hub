@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12" style="padding-top: 5px;">
+    <app-simple-datatable
+      *ngIf="loadingCompleted"
+      [isAddable]="true"
+      [isSearchable]="true"
+      [isMultiSelect]="true"
+      [isEditable]="true"
+      [isDeletable]="true"
+      [rows]="rows"
+      [columns]="columns"
+      [formElements]="formElements"
+      [title]="title"
+      (onLoad)="onLoad($event)"
+      (onAdd)="add($event)"
+      (onEdit)="update($event)"
+      (onDelete)="delete($event)">
+    </app-simple-datatable>
+  </div>
+</div>

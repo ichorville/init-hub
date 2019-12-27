@@ -1,0 +1,15 @@
+mat-card {
+    height: 88vh;
+}
+
+.clear-icon:hover {
+    cursor: pointer;
+}
+
+::ng-deep .mat-chip {
+    font-weight: normal;
+}
+
+::ng-deep .nav-link {
+    padding: 0rem 1.3rem !important;
+}

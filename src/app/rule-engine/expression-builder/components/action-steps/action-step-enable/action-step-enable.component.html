@@ -1,0 +1,12 @@
+<div>
+    <h6>Enable</h6>
+    <div class="form-group">
+        <label>Target Control</label>
+        <select class="form-control form-control-sm" [(ngModel)]="targetControl">
+            <option value="-1">-- Please Select --</option>
+            <option [value]="comp.componentKey" *ngFor="let comp of components; index as i">
+                {{comp.componentName}}
+            </option>
+        </select>
+    </div>
+</div>

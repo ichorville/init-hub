@@ -1,0 +1,8 @@
+<div class="modal-body">
+  <csi-dynamic-form
+    *ngIf="loaded"
+    [title]="formData.name"
+    [previewMode]="true"
+    [formElements]="formData.data">  
+  </csi-dynamic-form>
+</div>

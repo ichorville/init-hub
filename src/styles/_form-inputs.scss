@@ -1,0 +1,29 @@
+.search-input-group {
+  .form-control {
+    height: 58px;
+    border-radius: 8px;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus {
+      outline: none;
+      box-shadow: none;
+      border-color: #ced4da;
+    }
+  }
+
+  .input-group-text {
+    background: #fff;
+    border-radius: 8px;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus {
+      outline: none;
+      box-shadow: none;
+      border-color: #ced4da;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+app-simple-datatable {
+  width: 100%;
+}
+
+.search-filter-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.search-section {
+  width: 30%;
+}
+
+.filter-section {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ECECEC;
+  padding: 15px;
+  border-radius: 8px;
+  background: #FDFDFD;
+}
+
+.filter-section label {
+  margin: 0;
+  color: #3B444F;
+  font-size: 12px;
+}
+
+.filter-section a {
+  color: #3B444F;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.filter-list {
+  display: flex;
+  margin: 0 15px;
+  padding: 0;
+  list-style: none;
+}
+
+.filter-list li {
+  margin: 0 5px;
+  font-size: 12px;
+  border: 1px solid;
+  padding: 3px 6px;
+  border-radius: 8px;
+  background-color: transparent;
+  min-width: 75px;
+  text-align: center;
+}
+
+.filter-list--page {
+  border-color: #F25B50;
+  color: #F25B50;
+}
+
+.filter-list--component {
+  border-color: #6C68B9;
+  color: #6C68B9;
+}

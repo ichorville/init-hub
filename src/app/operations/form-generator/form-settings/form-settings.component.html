@@ -1,0 +1,95 @@
+<div class="modal-header d-flex justify-content-between">
+  Form Settings
+  <div class="btn-wrapper">
+    <button class="btn btn-default mr-1" (click)="onClose()">Close</button>
+    <button class="btn btn-success ml-1" (click)="onCloseSave()">Done</button>
+  </div>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12">
+      <tabset #staticTabs>
+        <tab>
+          <ng-template tabHeading>
+            <i class="material-icons">build</i>
+            <span class="header-icon-text">General Settings</span>
+          </ng-template>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Form Name</label>
+                <input type="text" class="form-control" [(ngModel)]="_fgs.formName">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="mat-b0">Select Modules</label>
+                <ng-select multiple="true" [(ngModel)]="_fgs.formModules" [items]="_fgs.applicableModules"
+                  bindLabel="name" bindValue="value">
+                  <ng-template ng-optgroup-tmp let-item="item">
+                    {{ item.name }}
+                  </ng-template>
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="mat-b0">Select Category</label>
+                <ng-select [(ngModel)]="_fgs.formCategory" [items]="_fgs.formCategories" bindLabel="name"
+                  bindValue="value">
+                  <ng-template ng-optgroup-tmp let-item="item">
+                    {{ item.name }}
+                  </ng-template>
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="mat-b0">Form Save Option</label>
+                <select class="form-control" [(ngModel)]="_fgs.formSaveOption" (change)="onSaveOptionChanged($event)">
+                  <option value="">SELECT OPTION</option>
+                  <option value="PER_PATIENT">PER PATIENT</option>
+                  <option value="PER_VISIT">PER VISIT</option>
+                  <option value="PER_VISIT_MULTIPLE">PER MULTIPLE VISIT</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label class="pure-material-checkbox">
+                <input type="checkbox" [(ngModel)]="_fgs.allFieldsMandatory"
+                  (change)="onFieldMandatoryChanged()">
+                <span>All Fields Mandatory</span>
+              </label>
+            </div>
+            <div class="col-md-12">
+              <label class="pure-material-checkbox">
+                <input type="checkbox" [(ngModel)]="_fgs.hideFormTitle"
+                  (change)="onHideFromTitleChanged()">
+                <span>Hide Form Title</span>
+              </label>
+            </div>
+            <div class="col-md-12">
+              <label class="pure-material-checkbox">
+                <input type="checkbox" [(ngModel)]="_fgs.gridAvailability" (change)="onGridChange($event)">
+                <span>Add Master Data-Table</span>
+              </label>
+            </div>
+          </div>
+        </tab>
+        <tab>
+          <ng-template tabHeading>
+            <i class="material-icons">settings</i>
+            <span class="header-icon-text">Expression Builder</span>
+          </ng-template>
+          <csi-expression-builder [components]="components" (componentRules)="expressionResults($event)">
+          </csi-expression-builder>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>
+<!-- <div class="modal-footer">
+  
+</div> -->

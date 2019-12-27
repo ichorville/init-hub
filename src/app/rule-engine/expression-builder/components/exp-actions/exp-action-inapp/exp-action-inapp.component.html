@@ -1,0 +1,32 @@
+<div>
+    <h6>{{actionData?.typeDesc}}</h6>
+</div>
+<div>
+
+    <div class="row m-0 p-0">
+        <div class="col-sm-9 p-1">
+            <div class="form-group">
+                <select class="form-control form-control-sm" [(ngModel)]="selectedNewActionStepKey">
+                    <option value="show">Show</option>
+                    <option value="hide">Hide</option>
+                    <option value="alert">Alert</option>
+                    <option value="validations">Validations</option>
+                    <option value="showForm">Show Form</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3 p-1">
+            <div class="form-group">
+                <button type="button" class="btn btn-sm btn-success" (click)="onClick_AddActionStep($event)">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-step-list">
+        <div *ngFor="let action of actionData.actionSteps; index as i;" class="action-step-item">
+            <app-action-steps-factory [actionData]="action">
+
+            </app-action-steps-factory>
+        </div>
+    </div>
+</div>

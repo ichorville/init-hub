@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-common [widget]="widget"></app-common>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <mat-checkbox class="example-margin" [(ngModel)]="currentWidget.includeTime" color="primary">Include Date Time?</mat-checkbox>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <mat-checkbox class="example-margin" [(ngModel)]="currentWidget.isDateRange" color="primary">Include Date Range?</mat-checkbox>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <mat-checkbox class="example-margin" [(ngModel)]="currentWidget.currentDate" color="primary">Set Current Date?</mat-checkbox>
+  </div>
+</div>

@@ -1,0 +1,358 @@
+// Dynamicform Builder Header__
+
+.dynamicForm {
+  // background: linear-gradient(90deg, #0D063B 0%, #3D2459 100%);
+  height: 100%;
+
+  .btn.btn-default {
+    background-color: #fff;
+    color: #2f85de;
+  }
+  &__modal {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    height: 100%;
+    // background: linear-gradient(90deg, #0D063B 0%, #3D2459 100%);
+    .modal-content {
+      border-radius: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #0D063B 0%, #3D2459 100%);
+    }
+  }
+
+  &__header {
+    padding: 15px 0;
+    color: #fff;
+
+    &--wrapper {
+      display: flex;
+      align-items: center;
+
+      &.right {
+        // justify-content: space-between;
+        display: block;
+      }
+    }
+
+    &--left,
+    &--right {
+      float: left;
+    }
+
+    &--left {
+      margin-right: 22px;
+
+      i {
+        &::before {
+          font-size: 30px;
+        }
+      }
+
+    }
+
+    &--right {}
+
+    h1 {
+      font-size: 20px;
+      font-weight: 300;
+
+      strong {
+        font-weight: 700;
+      }
+    }
+
+    &--notification {}
+  }
+
+  .notification-count {
+    background-color: #EC933F;
+    padding: 5px;
+    border-radius: 50%;
+  }
+
+  .notification-title {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
+
+  .search-wrapper,
+  .filter-wrapper {
+    float: left;
+  }
+
+  .search-wrapper {
+    position: relative;
+    max-width: 300px;
+    width: 100%;
+    input {
+      width: 100%;
+      min-height: 50px;
+      background-color: #2e1b50;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      padding: 0 10px;
+      font-size: 18px;
+      color: #fff;
+
+      &::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: #fff;
+        font-size: 16px;
+      }
+      &::-moz-placeholder {
+        /* Firefox 19+ */
+        color: #fff;
+        font-size: 16px;
+      }
+      &:-ms-input-placeholder {
+        /* IE 10+ */
+        color: #fff;
+        font-size: 16px;
+      }
+      &:-moz-placeholder {
+        /* Firefox 18- */
+        color: #fff;
+        font-size: 16px;
+      }
+    }
+    i {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 10px;
+      margin: auto;
+      height: 16px;
+      width: 16px;
+      &:before {
+        font-size: 18px;
+      }
+    }
+  }
+
+
+
+  .filter-wrapper {
+    margin-top: 16px;
+    margin-left: 30px;
+
+    h6 {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .filter-item {
+      padding: 6px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      margin: 3px;
+      text-transform: capitalize;
+
+      &--recentlyUsed {
+        background-color: #EC933F;
+        color: #fff;
+        border: 1px solid #EC933F;
+      }
+
+      &--favourites {
+        background-color: transparent;
+        color: #2ED573;
+        border: 1px solid #2ED573;
+      }
+
+      &--catergory {
+        background-color: transparent;
+        color: #FF97B3;
+        border: 1px solid #FF97B3;
+      }
+    }
+
+    button {
+      margin-left: 10px;
+      background: transparent;
+      border: none;
+      color: #fff;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .action-toolbar {
+    float: right;
+    margin-top: 8px;
+
+    button {
+      border-radius: 4px;
+      margin: 0 5px;
+    }
+  }
+
+
+
+
+  // Dynamic Form Builder Body__
+
+
+  &__body {
+    padding: 10px 0 20px;
+
+    &--content {
+      .cs-form-heading {
+        border: none !important;
+      }
+    }
+
+    &--formTypes {
+      border: 1px solid #5A699F;
+      padding: 12px 15px;
+      border-radius: 30px 0 0 30px;
+      height: 100%;
+    }
+
+    &--left-wrapper {
+      // max-height: 70vh;
+      // overflow: scroll;
+
+      h6 {
+        color: #fff;
+      }
+
+      ul {
+        padding: 0;
+        max-height: 72vh;
+        overflow-y: scroll;
+
+        li {
+          list-style-type: none;
+        }
+      }
+
+      .formList {
+        // display: flex;
+        // width: 100%;
+        // justify-content: space-between;
+
+        &__item {
+          background: linear-gradient(90deg, #fff 0%, #C8C8C8 100%);
+          //   background: linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+          padding: 7px 10px;
+          border-radius: 8px;
+          margin-bottom: 8px;
+          min-height: 70px;
+
+        }
+
+        &__item--top,
+        &__item--mid {}
+
+        &__item--top {
+          display: flex;
+          justify-content: space-between;
+
+          h6 {
+            font-size: 12px;
+            font-weight: 400;
+            color: #3B444F;
+          }
+        }
+
+        &__item--mid {
+
+          h4 {
+            text-transform: capitalize;
+            color: #224566;
+            font-size: 14px;
+            font-weight: 700;
+          }
+
+          span {
+            color: #3B444F;
+            font-size: 12px;
+            display: block;
+            text-align: right;
+          }
+
+          .formList-options {
+            .fi.flaticon-star-1 {
+              &:before {
+                color: #EC933F;
+              }
+            }
+          }
+        }
+      }
+
+    }
+
+    &--right-wrapper {
+      height: 100%;
+      max-height: 84.5vh;
+      overflow-y: auto;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 0 20px 20px 0;
+    }
+
+    &--header {
+      padding: 15px 25px 15px;
+      border-bottom: 1px solid #F2F2F2;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__navigation-toolbar {
+    color: #fff;
+    margin-top: 10px;
+
+    p {
+      text-transform: capitalize;
+      display: inline-block;
+      margin: 0;
+
+      span {
+        margin: 0 3px;
+      }
+    }
+
+    &--options {
+      float: right;
+      display: inline-block;
+
+      i {
+        margin-right: 5px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+/*
+ *  Dynamic Scroll
+ */
+
+.custom-dynamic-scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  // border-radius: 10px;
+  background-color: transparent;
+}
+
+.custom-dynamic-scroll::-webkit-scrollbar {
+  width: 12px;
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.custom-dynamic-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: rgb(150, 145, 145);
+}

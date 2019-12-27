@@ -1,0 +1,85 @@
+<div class="row">
+	<div class="col-md-6" style="border-bottom: 1px dashed #eee; max-height: 45px;">
+		<mat-form-field style="top: -10px;">
+			<input 
+				matInput 
+				placeholder="Screen Name" 
+				value="" 
+				[(ngModel)]="screenName">
+		</mat-form-field>
+		<span style="flex: 1 1 auto;"></span>
+	</div>
+	<div class="col-md-6" style="text-align: end; border-bottom: 1px dashed #eee;">
+		<button mat-raised-button style="left: -30px; width: 100px;" 
+			[disabled]="widgets.length == 0"
+			(click)="viewGrid()">{{ gridsterOptions.lines.always == true ? 'Hide' : 'View' }} Grid</button>
+		<button mat-raised-button style="left: -20px; width: 100px;" 
+			[disabled]="widgets.length == 0" (click)="removeAll()">Reset</button>
+		<button mat-raised-button style="left: -10px; width: 100px;" 
+			[disabled]="widgets.length == 0" (click)="showPreview()">Preview</button>
+		<button mat-raised-button style="width: 100px;"
+			[disabled]="widgets.length == 0" (click)="preSave()">{{ screenLoadedForEdit == true ? 'Update' : 'Save' }}</button>
+	</div>
+	<div class="col-md-12" style="padding-bottom: 5px;">
+		<div class="main-content" id="form-grid">
+			<ngx-gridster 
+				[options]="gridsterOptions" 
+				[draggableOptions]="gridsterDraggableOptions" 
+				(reflow)="onReflow($event)"
+				(optionsChange)="optionsChange($event)" 
+				#gridster1 
+				class="dashboard">
+		
+					<ngx-gridster-item 
+						*ngFor="let widget of widgets; let indx = index" 
+						[ngClass]="widget.previouslySelected ? 'pulse': ''"
+						#itemComp 
+						[options]="itemOptions"
+						[dragAndDrop]="widget.dragAndDrop" 
+						[resizable]="widget.resizable" 
+						[(x)]="widget.x" 
+						[(y)]="widget.y"
+	
+						[(xSm)]="widget.xSm" 
+						[(ySm)]="widget.ySm" 
+	
+						[(xMd)]="widget.xMd" 
+						[(yMd)]="widget.yMd" 
+	
+						[(xLg)]="widget.xLg"
+						[(yLg)]="widget.yLg" 
+	
+						[(xXl)]="widget.xXl" 
+						[(yXl)]="widget.yXl" 
+	
+						[(w)]="widget.w" 
+						[(h)]="widget.h"
+	
+						[(wSm)]="widget.wSm" 
+						[(hSm)]="widget.hSm" 
+						
+						[(wMd)]="widget.wMd" 
+						[(hMd)]="widget.hMd" 
+						
+						[(wLg)]="widget.wLg"
+						[(hLg)]="widget.hLg" 
+						
+						[(wXl)]="widget.wXl" 
+						[(hXl)]="widget.hXl" 
+						
+						(change)="itemChange($event, gridster1)">
+	
+						<div class="panel-heading">
+							<h5 class="panel-title">{{ widget.title }}</h5>
+							<span style="flex: 1 1 auto;"></span>
+							<span class="field-remove" (click)="removeField($event, indx, gridster1)"><i class="removal-icon material-icons menu-icon">delete</i></span>
+						</div>
+	
+						<div class="panel-body" (click)="onFieldClick(widget)">
+							<pre style="position: absolute; bottom: 0px; margin-bottom: 5px;"> {{ widget.content }} | {{ itemComp?.item?.x }} x {{ itemComp?.item?.y }} | {{ widget.wLg }} x {{ widget.hLg }}</pre>
+						</div>
+				</ngx-gridster-item>
+			</ngx-gridster>
+		</div>
+	</div>
+</div>

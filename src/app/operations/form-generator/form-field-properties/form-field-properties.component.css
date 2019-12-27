@@ -1,0 +1,22 @@
+*{
+  font-size: 14px;
+}
+
+.btn {
+  background: #5466c1;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.btn:hover {
+  box-shadow: 0.1em 0.1em 0.8em rgba(142, 45, 226, 0.5);
+}
+
+pre{
+  font-weight: 600;
+  font-family: inherit;
+}
+.custom-checkbox{
+display: flex;
+margin: 3px 0;
+}

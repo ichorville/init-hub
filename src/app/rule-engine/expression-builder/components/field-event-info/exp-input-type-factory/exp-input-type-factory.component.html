@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <!-- <select class="form-control form-control-sm" [(ngModel)]="selectedInputType"> -->
+            <select class="form-control form-control-sm" [(ngModel)]="inputType">
+                <option value="-1">-- Select Type --</option>
+                <option value="{{EXP_INPUT_TYPE_ENUM.NUMBER}}">Number</option>
+                <option value="{{EXP_INPUT_TYPE_ENUM.STRING}}">Text</option>
+                <option value="{{EXP_INPUT_TYPE_ENUM.FIELD}}">Other Field</option>
+                <option value="{{EXP_INPUT_TYPE_ENUM.API}}">API</option>
+                <option value="{{EXP_INPUT_TYPE_ENUM.MASTER_DATA}}">Master Data</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+
+        <div #compContainer>
+        </div>
+    </div>
+</div>

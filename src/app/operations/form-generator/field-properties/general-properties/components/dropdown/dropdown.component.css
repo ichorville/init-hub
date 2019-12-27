@@ -1,0 +1,32 @@
+mat-checkbox{
+    margin-top:10px;
+}
+
+.option-col-action{
+    padding: 5px;
+}
+
+.option-col-action i{
+    padding: 2px;
+    border:1px solid gainsboro;
+    cursor: pointer;
+}
+
+.option-col-action i:first-child:hover{
+    background: gainsboro;
+}
+
+.option-col-action i:last-child:hover{
+    background: red;
+    color: white;
+}
+
+.option-col-action i:first-child{
+    margin-right: 2px;
+}
+
+.span-change-api-res{
+    position: absolute;
+    right: 15px;
+    top: 1px;
+}

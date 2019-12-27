@@ -1,0 +1,35 @@
+mat-card {
+    height: 88vh;
+}
+
+.cancel-icon {
+    margin-left: 10px;
+    border-radius: 58px;
+    color: white;
+    height: 14px;
+    width: 14px;
+    position: relative;
+    top: 0px;
+}
+
+.clear-icon {
+    font-size: 11px;
+    position: relative;
+    top: -3px;
+    left: 1px;
+    border-radius: 10px;
+    background: red;
+    border: 2px solid red;
+}
+
+.clear-icon:hover {
+    cursor: pointer;
+}
+
+::ng-deep .mat-chip {
+    font-weight: normal;
+}
+
+::ng-deep .nav-link {
+    padding: 0rem 3.3rem !important;
+}

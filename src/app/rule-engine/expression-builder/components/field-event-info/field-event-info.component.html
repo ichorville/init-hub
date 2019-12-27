@@ -1,0 +1,41 @@
+<div class="comp-event" *ngIf="eventExpression != null">
+	<div class="row comp-event-header">
+		<div class="col-10">
+			<div class="comp-event-title">{{eventExpression.eventKey | titlecase}} Event</div>
+		</div>
+		<div class="col-2 text-right">
+			<button type="button" class="btn btn-sm">
+				<i class="fa fa-close"></i>
+			</button>
+		</div>
+	</div>
+
+	<div class="comp-event-body">
+
+		<query-builder 
+			[(ngModel)]='query' 
+			[config]='config' 
+			[classNames]='classNames'>
+
+			<ng-container 
+				*queryInput="let rule; let field=field; let options=options; type: 'dynamic'"
+				(onChange)="onChange_DynamicInput($event)">
+				<div class="col">
+					<app-exp-input-type-factory 
+						[eventExpModel]='eventExpression' 
+						[(ngModel)]="rule.value"
+						(ngModelChange)="onValueChange_InputFactory($event)">
+					</app-exp-input-type-factory>
+				</div>
+			</ng-container>
+		</query-builder>
+		<div class="text-right">
+			<div class="form-group">
+				<button 
+					type="button" 
+					class="btn btn-level-2 btn-sm btn-success pro-add-btn"
+					(click)="onClick_Test($event)">Actions</button>
+			</div>
+		</div>
+	</div>
+</div>

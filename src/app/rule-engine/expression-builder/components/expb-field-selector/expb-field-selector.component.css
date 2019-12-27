@@ -1,0 +1,17 @@
+
+.comp-section {
+}
+.comp-section-title {
+  background-color: #eee;
+  padding: 5px;
+}
+
+.comp-list {
+
+}
+
+.comp-item {
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}

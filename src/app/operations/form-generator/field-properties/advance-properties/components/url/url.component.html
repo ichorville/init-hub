@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-12">
+    <mat-checkbox class="example-margin" [(ngModel)]="currentWidget.required" color="primary">Mark as Mandatory</mat-checkbox>
+  </div>
+  <div class="col-md-12">
+    <mat-checkbox class="example-margin" [(ngModel)]="currentWidget.disabled" color="primary">Disable</mat-checkbox>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <label class="mat-b0">Validation Message</label>
+    <input
+      class="form-control"
+      value=""
+      [(ngModel)]="currentWidget.errorMessage">
+  </div>
+</div>

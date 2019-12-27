@@ -1,0 +1,17 @@
+
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Select field usage form</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <pre>Selected : {{selectedForm?.formName}}</pre>
+  <li *ngFor="let form of formsUsed" style="cursor: pointer">
+    <span (click)="selectUsedForm(form)">{{form.formName}}</span>
+  </li>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" (click)="confirmUsedForm(true)">Yes</button>
+    <button class="btn btn-default" (click)="confirmUsedForm(false)">No</button>
+</div>

@@ -1,0 +1,529 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <label class="mat-b0">Select Field Type</label>
+      <ng-select
+        (change)="onTypeChange($event)"
+        [(ngModel)]="selectedControl"
+        [items]="Fields"
+        bindLabel="viewValue"
+        bindValue="value"
+        groupBy="type">
+        <ng-template ng-optgroup-tmp let-item="item">
+          {{ item.type }}
+        </ng-template>
+      </ng-select>
+    </div>
+    <div class="col-6"></div>
+    <div class="col-3 form-field-save-button d-flex align-items-center justify-content-between">
+      <button class="btn btn-default" (click)="onReset()">Reset</button>
+      <button class="btn btn-success" (click)="onSave()">
+        {{ isUpdateStatus == true ? 'Update' : 'Save' }}
+      </button>
+    </div>
+  </div>
+  <div>
+    <div *ngIf="controlSelected" style="padding-top: 5px;">
+      <div class="row">
+        <!-- DEFAULT config for all fields includes labelname and placeholder values -->
+        <div class="col-md-3">
+          <label class="mat-b0">Label Name</label>
+          <input
+            class="form-control"
+            value=""
+            [(ngModel)]="labelName"
+            [disabled]='isUpdateStatus'>
+        </div>
+        <div class="col-md-3" *ngIf="selectedControl != 'formLogo' && selectedControl != 'tabularEntry'">
+          <label class="mat-b0">Placeholder</label>
+          <input
+            class="form-control"
+            value=""
+            [(ngModel)]="placeHolder">
+        </div>
+        <div class="col-md-3" *ngIf="selectedControl == 'imageUpload' || selectedControl == 'imageAnnotator' || selectedControl == 'formLogo'">
+          <label class="mat-b0">Height</label>
+          <input
+            class="form-control"
+            value=""
+            type="number"
+            [(ngModel)]="imageHeight">
+        </div>
+        <div class="col-md-3" *ngIf="selectedControl == 'imageUpload' || selectedControl == 'imageAnnotator' || selectedControl == 'formLogo'">
+          <label class="mat-b0">Width</label>
+          <input
+            class="form-control"
+            value=""
+            type="number"
+            [(ngModel)]="imageWidth">
+        </div>
+        <div class="col-md-3"  *ngIf="selectedControl == 'formLogo'">
+          <mat-button-toggle-group (change)="onImageUploadTypeChanged($event)" style="margin-top: 12px;">
+            <mat-button-toggle appearance="standard" value="URL">URL</mat-button-toggle>
+            <mat-button-toggle appearance="standard" value="UPLOAD" checked>Image Upload</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="col-md-3"  *ngIf="selectedControl == 'imageAnnotator'">
+          <img *ngIf="(selectedImage!=null || selectedImage!=undefined) && selectedImage" 
+          [src]="selectedImage"
+          [ngStyle]="{'width': '100%'}">
+          <input type="hidden" [(ngModel)]="selectedImage">
+          <button 
+            style="margin-top: 10px;" 
+            class="btn btn-sm btn-primary" 
+            (click)="onImageButtonClicked($event)">
+            Upload Image
+            <span class="badge badge-secondary" *ngIf="selectedImage">Selected</span>
+          </button>
+          <input 
+            #imageFileInput
+            class="form-control"
+            type="file"
+            style="display: none"
+            (change)="onImageSelected($event)">
+        </div>
+        <div class="col-md-3" *ngIf="selectedControl == 'textBox' || selectedControl == 'textArea' || selectedControl == 'password'">
+          <label class="mat-b0">Character Length</label>
+          <input
+            class="form-control"
+            type="number"
+            [(ngModel)]="characterLength"
+            (keydown)="validateInput($event)">
+        </div>
+        <div class="col-md-3"
+          *ngIf="selectedControl === 'radio' || selectedControl === 'dropdown' || selectedControl === 'checkbox'" style="padding-top: 15px;">
+          <div class="custom-checkbox">
+            <input
+              style="height: 20px; width: 20px"
+              type="checkbox"
+              class="checkbox-custom"
+              [value]="tryManualOptions"
+              [name]="tryManualOptions"
+              [(ngModel)]="tryManualOptions"
+              (change)="tryManualOptions == !tryManualOptions">
+            <label
+              [for]="tryManualOptions"
+              class="checkbox-custom-label">
+              Try Manual Options?
+            </label>
+          </div>
+        </div>
+        <div class="col-md-3"
+          *ngIf="selectedControl === 'dropdown'" style="padding-top: 15px;">
+          <div class="custom-checkbox">
+            <input
+              style="height: 20px; width: 20px"
+              type="checkbox"
+              class="checkbox-custom"
+              [value]="allowMultiSelect"
+              [name]="allowMultiSelect"
+              [(ngModel)]="allowMultiSelect"
+              (change)="allowMultiSelect == !allowMultiSelect">
+            <label
+              [for]="allowMultiSelect"
+              class="checkbox-custom-label">
+              Allow Multiple Select?
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:10px;" *ngIf="selectedControl === 'formLogo'">
+        <div class="col-md-4">
+          <div *ngIf="imageUploadType==='URL'">
+            <label class="mat-b0">URL</label>
+            <input class="form-control" value="" [(ngModel)]="formLogoUrl">
+          </div>
+          
+          <div *ngIf="imageUploadType==='UPLOAD'">
+            <img *ngIf="(selectedImage!=null || selectedImage!=undefined) && selectedImage" [src]="selectedImage" [ngStyle]="{'width': '100%'}">
+            <input type="hidden" [(ngModel)]="selectedImage">
+            <button 
+              style="margin-top: 10px;" 
+              class="btn btn-sm btn-primary" 
+              (click)="onImageButtonClicked($event)">
+              Upload Image
+              <span class="badge badge-secondary" *ngIf="selectedImage">Selected</span>
+            </button>
+            <input 
+              #imageFileInput
+              class="form-control"
+              type="file"
+              style="display: none"
+              (change)="onImageSelected($event)">
+          </div>
+        </div>
+          
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <!-- NUMBER field configuration -->
+          <div class="row">
+            <div class="col-md-6" *ngIf="selectedControl === 'number' || selectedControl === 'range'">
+              <label class="mat-b0">Min Value</label>
+              <input
+                class="form-control"
+                type="number"
+                [(ngModel)]="minValue"
+                (keydown)="validateKey($event)">
+            </div>
+            <div class="col-md-6" *ngIf="selectedControl === 'number' || selectedControl === 'range'">
+              <label class="mat-b0">Max Value</label>
+              <input
+                class="form-control"
+                type="number"
+                [min]="minValue + 1"
+                [(ngModel)]="maxValue"
+                (keydown)="validateKey($event)">
+              <div *ngIf="maxValue<=minValue && minValue" class="pers-error-msg">
+                Please Enter a Higher value than {{ minValue }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <!-- shared template for DROPDOWN, RADIO, CHECKBOX -->
+          <div class="row"
+            *ngIf="(selectedControl === 'radio' || selectedControl === 'dropdown' || selectedControl === 'checkbox')
+              && tryManualOptions"
+            style="margin-left: 0px; margin-right: 0px;">
+            <div class="col-md-12">
+              <div class="row" *ngIf="selectedControl === 'radio'">
+                <div class="col-md-4" style="margin-bottom: 15px; padding-left: 0px;">
+                  <div class="custom-checkbox">
+                    <input
+                      style="height: 20px; width: 20px"
+                      type="checkbox"
+                      class="checkbox-custom"
+                      [value]="enableInlineField"
+                      [name]="enableInlineField"
+                      [(ngModel)]="enableInlineField"
+                      (change)="enableInlineField == !enableInlineField">
+                    <label
+                      [for]="enableInlineField"
+                      class="checkbox-custom-label">
+                      Inline Field ?
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6" style="padding-right: 0px; padding-left: 0px;">
+                  <label>Options<span class="required-label">*</span></label>
+                </div>
+                <div class="col-md-6" style="padding-right: 0px; padding-left: 15px;">
+                  <button id="opt-add" class="pers-option-add" (click)="addMoreOptions()">
+                    <i class="material-icons">add</i>
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3" style="padding-left: 0px; padding-right: 20px;">
+                  <label class="mat-b0">Key</label>
+                  <input
+                    class="form-control"
+                    value=""
+                    [(ngModel)]="optionLabel">
+                </div>
+                <div class="col-md-3" style="padding-left: 0px; padding-right: 20px;">
+                  <label class="mat-b0">Value</label>
+                  <input
+                    class="form-control"
+                    value=""
+                    [(ngModel)]="optionValue">
+                </div>
+                <div class="col-md-6">
+                  <div class="row" *ngIf="selectedControl === 'radio'">
+                    <div class="col-md-6" style="padding-top: 15px;">
+                      <div class="custom-checkbox">
+                        <input
+                          style="height: 20px; width: 20px"
+                          type="checkbox"
+                          class="checkbox-custom"
+                          [value]="enableOptionTextbox"
+                          [name]="enableOptionTextbox"
+                          [(ngModel)]="enableOptionTextbox"
+                          (change)="enableOptionTextbox == !enableOptionTextbox">
+                        <label
+                          [for]="enableOptionTextbox"
+                          class="checkbox-custom-label">
+                          Add Text Field ?
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="enableOptionTextbox">
+                      <label class="mat-b0">Label</label>
+                      <input
+                        class="form-control"
+                        value=""
+                        [(ngModel)]="optionTextboxLabel">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <span *ngFor="let value of optionList">
+                <div class="row cr-p" style="border-bottom: 1px solid #e9ecef; padding-bottom: 2px;">
+                  <div class="col-md-3" (click)="editOption(value)" style="padding-left: 0px;">
+                    <span>{{ value.value }}</span>
+                  </div>
+                  <div class="col-md-3" (click)="editOption(value)" style="padding-left: 0px;">
+                    <span>{{ value.label }}</span>
+                  </div>
+                  <div *ngIf="selectedControl === 'radio'" class="col-md-1" (click)="editOption(value)">
+                    <i *ngIf="value.enableOptionTextbox" class="material-icons menu-icon">short_text</i>
+                  </div>
+                  <div *ngIf="selectedControl === 'radio'" class="col-md-3" (click)="editOption(value)">
+                    <span>{{ value.optionTextboxLabel }}</span>
+                  </div>
+                  <div class="col-md-1">
+                    <button id="opt-remove" class="pers-option-remove" (click)="removeOption(value)">
+                      <i class="material-icons">remove</i>
+                    </button>
+                  </div>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <!-- shared config for CUSTOM DROPDOWN, RADIO, CHECKBOX -->
+          <div class="row"
+            *ngIf="(selectedControl === 'dropdown' || selectedControl === 'radio' || selectedControl === 'checkbox')
+              && !tryManualOptions">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="mat-b0">Select Resource</label>
+                  <ng-select
+                    (change)="onResourceSelected($event)"
+                    [disabled]="!selectedControl"
+                    [(ngModel)]="selectedResource"
+                    [items]="resourceTypes"
+                    bindLabel="viewValue"
+                    bindValue="value">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="row"
+                *ngIf="controlSelected && !tryManualOptions && selectedResource == 'resources'"
+                style="margin: 15px 0px;">
+                <div class="col-md-4">
+                  <div class="eq-hier">
+                    <div class="eq-hier-header">Select Hierarchy</div>
+                    <div *ngIf="selectedCategory;else other_content" class="alert alert-success">
+                      <small>Selected Category: {{selectedCategory.name}}</small>
+                    </div>
+                    <div class="eq-hier-body" style="max-height:250px; overflow-x:hidden; overflow-y: scroll;">
+                      <ng-template #other_content>
+                        <div class="alert alert-danger" role="alert">
+                          Please Select a Category
+                        </div>
+                      </ng-template>
+                      <app-setup-tree
+                        (selectedValue)="onSelect($event)"
+                        [list]="items">
+                      </app-setup-tree>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <csi-ag-grid
+                    [csiaggridoptions]="gridOptions"
+                    [csiaggridcolumn]="colDefs"
+                    (griReadyEvent)="griReadyEvent($event)"
+                    style="width:100%;">
+                  </csi-ag-grid>
+                </div>
+              </div>
+              <div class="row"
+                *ngIf="(selectedControl === 'dropdown' || selectedControl === 'radio' || selectedControl === 'checkbox')
+                  && (selectedResource == 'clinics' || selectedResource == 'agegroups' || selectedResource == 'procedures' || selectedResource == 'diagnosis')
+                    && !tryManualOptions"
+                style="margin:15px 0px;">
+                <div class="division-mat-table">
+                  <table class="table">
+                    <thead style="background: #eee">
+                      <th *ngFor="let header of resourcesColDefs">{{ header.headerName | titlecase }}</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of resourceData">
+                        <td *ngFor="let col of resourcesColDefs">{{ data[col.field] }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row"
+                  *ngIf="(selectedControl === 'dropdown' || selectedControl === 'radio' || selectedControl === 'checkbox')
+                  && controlSelected
+                    && selectedResource
+                     && !tryManualOptions">
+                <div class="col-md-6" style="border-bottom: 1px dashed #eee; padding-top: 10px;">
+                  <label class="mat-b0">Select Display Property</label>
+                  <ng-select
+                    (change)="onDisplayPropertyChange($event)"
+                    [(ngModel)]="selectedDisplayProperty"
+                    [items]="objectProperties"
+                    bindLabel="viewValue"
+                    bindValue="value">
+                  </ng-select>
+                </div>
+                <div class="col-md-6" style="border-bottom: 1px dashed #eee; padding-top: 10px;">
+                  <label class="mat-b0">Select Value Property</label>
+                  <ng-select
+                    (change)="onDisplayValueChange($event)"
+                    [(ngModel)]="selectedValueProperty"
+                    [items]="objectProperties"
+                    bindLabel="viewValue"
+                    bindValue="value">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- DATE control configuration -->
+  <div class="row" *ngIf="selectedControl === 'date'" style="margin-left: 0px; margin-right: 0px;">
+    <div class="col-md-6" style="display: grid; padding-left: 0px;">
+      <div class="custom-checkbox">
+        <input
+          style="height: 20px; width: 20px"
+          type="checkbox"
+          class="checkbox-custom"
+          [value]="isTimeWithDate"
+          [name]="isTimeWithDate"
+          [(ngModel)]="isTimeWithDate"
+          (change)="isTimeWithDate == !isTimeWithDate">
+        <label
+          [for]="isTimeWithDate"
+          class="checkbox-custom-label">
+          Include Time
+        </label>
+      </div>
+      <div class="custom-checkbox">
+        <input
+          style="height: 20px; width: 20px"
+          type="checkbox"
+          class="checkbox-custom"
+          [value]="isDateRange"
+          [name]="isDateRange"
+          [(ngModel)]="isDateRange"
+          (change)="isDateRange == !isDateRange">
+        <label
+          [for]="isDateRange"
+          class="checkbox-custom-label">
+          is Range
+        </label>
+      </div>
+    </div>
+  </div>
+  <!-- CUSTOM TEXT configuration -->
+  <div class="row" *ngIf="selectedControl === 'customText'">
+    <div class="col-md-12" style="margin-bottom:15px; margin-top: 10px;">
+      <ckeditor
+        [editor]="EDITOR"
+        [config]="editorConfig"
+        [(ngModel)]="customTextBody">
+      </ckeditor>
+    </div>
+  </div>
+
+  <!-- Tabular Entry -->
+  <div class="row" *ngIf="selectedControl === 'tabularEntry'">
+    <div class="col-md-12">
+      <p>Header Definitions</p>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" [(ngModel)]="tabularFieldName" placeholder="Field Name">
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" [(ngModel)]="tabularHeaderName" placeholder="Header Name">
+    </div>
+    <div class="col-md-3">
+      <ng-select
+        (change)="tabularFieldTypeChange($event)"
+        [items]="tabularFieldTypes"
+        placeholder="Select field type"
+        bindLabel="name"
+        bindValue="value">
+      </ng-select>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-primary" (click)="addHeaderDefinition()">Add Header</button>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-bordered" style="margin-top:10px">
+        <thead>
+          <th>Field Name</th>
+          <th>Header Name</th>
+          <th>Field Type</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let definition of tabularHeaderDefinitions; let i=index;">
+            <td>{{definition.fieldName}}</td>
+            <td>{{definition.headerName}}</td>
+            <td>{{definition.fieldType}}</td>
+            <td>
+              <i class="material-icons" style="color: red; cursor: pointer;" (click)="removeDefinition(i)">highlight_off</i>
+            </td>
+          </tr>
+          <tr *ngIf="(tabularHeaderDefinitions.length<=0)">
+            <td colspan="4">No definitions found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="getApplicableControls()">
+
+    <div class="col-md-3">
+      <mat-form-field>
+        <mat-label>Select The Resource</mat-label>
+        <mat-select [(ngModel)]="selectedResourceType" (selectionChange)="onResourceChange($event)">
+          <mat-option *ngFor="let resource of referanceTypes" [value]="resource.value">
+            {{resource.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3" *ngIf="showApiDropdown">
+      <ng-template #customItemTemplate let-model="item" let-index="index">
+        <h5>{{model.formName}} - {{ model.fieldName }}</h5>
+      </ng-template>
+      <input 
+        [(ngModel)]="asyncSelected"
+        [typeaheadAsync]="true"
+        [typeahead]="dataSource"
+        [typeaheadOptionsLimit]="7"
+        [typeaheadItemTemplate]="customItemTemplate"
+        typeaheadOptionField="fieldName"
+        (typeaheadOnSelect)="typeaheadOnSelect($event,'resourceBinding')"
+        placeholder="Select Field"
+        style="margin-top:10px"
+        class="form-control">
+    </div>
+    <div class="col-md-6" *ngIf="!showApiDropdown">
+      <ng-template #apiBindTemplate let-model="item" let-index="index">
+        <h5>{{ model.viewValue }}</h5>
+      </ng-template>
+      <input 
+        [(ngModel)]="selectedBinding"
+        [typeahead]="apiBindingSource"
+        [typeaheadItemTemplate]="apiBindTemplate"
+        typeaheadOptionField="viewValue"
+        typeaheadGroupField="type"
+        (typeaheadOnSelect)="typeaheadOnSelect($event,'fieldBinding')"
+        placeholder="Select Api Reference"
+        style="margin-top:10px"
+        class="form-control">
+    </div>
+  </div>
+</div>

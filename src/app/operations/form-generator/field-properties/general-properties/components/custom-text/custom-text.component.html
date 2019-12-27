@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-common [widget]="widget" exclude="['placeholder']"></app-common>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <label>Description</label>
+    <editor 
+      [(ngModel)]="currentWidget.customTextBody" 
+      [init]="editorInit"
+      [apiKey]="apiKey">
+    </editor>
+  </div>
+</div>

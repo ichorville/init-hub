@@ -1,0 +1,46 @@
+<!-- Grid Properties -->
+<div class="row meta-header">
+  <div class="col-md-10">
+    <pre>Tab Properties</pre>
+  </div>
+  <div class="col-md-2">
+    <button (click)="respawnFormMetaData()" class="meta-bat-close">
+      <i class="material-icons" style="font-size: 12px;">close</i>
+    </button>
+  </div>
+  <div class="col-md-4">
+    <button (click)="add()">+</button>
+  </div>
+  <div class="col-md-4">
+    <span>{{ tabs.length }}</span>
+  </div>
+  <div class="col-md-4">
+    <button (click)="remove()">-</button>
+  </div>
+  <div class="row">
+    <div class="col-md-12" *ngFor="let tab of tabs; let i = index">
+      <accordion 
+        [isAnimated]="true"
+        [closeOthers]="'true'">
+        <accordion-group >
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left" style="position: relative; top: -5px;">p</div>
+            <span class="float-right pull-right">
+              <button class="action-meta-bat-close" (click)="removeAction(i)">
+                <i class="material-icons" style="font-size: 12px;">close</i>
+              </button>
+            </span>
+          </button>
+          <!-- <app-expression-action-options
+            [type]="expression.type"
+            [expression]="expression">
+          </app-expression-action-options> -->
+        </accordion-group>
+      </accordion>
+    </div>
+  </div>
+</div>
+  
+
+  
+  

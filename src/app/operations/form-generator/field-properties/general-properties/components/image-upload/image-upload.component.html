@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-common [widget]="widget" exclude="['placeholder']"></app-common>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <label class="mat-b0">Button Text</label>
+    <input
+      class="form-control"
+      type="text"
+      [(ngModel)]="currentWidget.placeholder">
+  </div>
+  <div class="col-md-12">
+    <label class="mat-b0">Height</label>
+    <input
+      class="form-control"
+      type="number"
+      [(ngModel)]="currentWidget.imageHeight">
+  </div>
+  <div class="col-md-12">
+    <label class="mat-b0">Width</label>
+    <input
+      class="form-control"
+      type="number"
+      [(ngModel)]="currentWidget.imageWidth">
+  </div>
+</div>

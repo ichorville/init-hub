@@ -1,0 +1,235 @@
+:host/deep/ mat-select {
+    width: 100% !important;
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 350px;
+}
+
+.division-mat-table{
+  width:100%;
+  height:300px;
+  overflow-y: scroll;
+}
+
+mat-form-field{
+  width:100%;
+}
+
+.form-field-save-button button{
+  margin-top:10px;
+}
+
+// .form-field-save-button button:first-child{
+//   margin-right:15px;
+// }
+
+.field-header {
+    font-weight: 200;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    position: relative;
+    top: -10px;
+}
+
+.switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .switch input {
+    display:none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+  }
+
+  input:checked + .slider {
+    background-color: #66bb6a;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background-color: #f1f2f3;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .container {
+    margin: 0 auto;
+  }
+
+  .editItem {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 2px;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .cr-p {
+    cursor: pointer;
+  }
+
+  .required-label {
+    color: red;
+  }
+
+  ::ng-deep .toast {
+    opacity: 1 !important;
+  }
+
+  ::ng-deep .toast-warning {
+    background-color: #F89406 !important;
+  }
+
+::ng-deep .mat-raised-button {
+    min-width: 80px !important;
+}
+
+::ng-deep #opt-add.mat-icon-button {
+  width: 25px !important;
+  height: 25px !important;
+  position: relative;
+  top: 0px;
+  border: 0.5px solid #eee;
+}
+
+::ng-deep #opt-add mat-icon {
+  font-size: 17px;
+  position: relative;
+  top: -8px;
+}
+
+::ng-deep #opt-remove.mat-icon-button {
+  width: 20px !important;
+  height: 20px !important;
+  position: relative;
+  top: 5px;
+  border: 0.5px solid #eee;
+}
+
+::ng-deep #opt-remove mat-icon {
+  font-size: 12px;
+  position: relative;
+  top: -12px;
+  left: -3px;
+}
+
+.btn {
+  min-width: 125px;
+}
+
+.mat-b0 {
+  margin-bottom: 0px;
+}
+
+.form-field-save-button {
+  .btn {
+    min-width: 90px !important;
+  }
+}
+
+.custom-checkbox {
+  padding: 4.5px 0;
+  font-weight: normal;
+  display: flex;
+}
+.checkbox-custom {
+  opacity: 0;
+  position: absolute;
+}
+.checkbox-custom-label {
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 0px;
+  z-index: 1000;
+}
+.checkbox-custom+.checkbox-custom-label:before {
+  content: '';
+  border: 2px solid #bbbcbc;
+  display: inline-block;
+  vertical-align: middle;
+  width: 22px;
+  height: 22px;
+  padding: 2px;
+  margin-right: 10px;
+  border-radius:3px;
+}
+.checkbox-custom:checked+.checkbox-custom-label:before {
+  background:url(http://www.freeiconspng.com/uploads/accept-tick-icon-12.png) no-repeat;
+  background-size: 14px 14px;
+  background-position: 4px 4px;
+  border: 1px solid #009966;
+}
+
+.pers-option-add, .pers-option-remove {
+  border: 2px solid #bbbcbc;
+  display: inline-block;
+  vertical-align: middle;
+  width: 22px;
+  height: 22px;
+  padding: 2px;
+  margin-right: 10px;
+  border-radius: 3px;
+  background: white;
+
+  &:focus {
+    outline: 0px auto !important;
+  }
+  i {
+    position: relative;
+    top: -2px;
+    left: -2px;
+    font-size: 17px;
+  }
+}
+
+.pers-error-msg {
+  color: red;
+  font-size: 12px;
+}

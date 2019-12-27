@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label>Module</label>
+            <select class="form-control form-control-sm" [(ngModel)]="selectedModuleId" (change)="onChange_Module($event)">
+                <option value="-1">-- Please Select --</option>
+                <option *ngFor="let data of modules; index as i;" [value]="data.id">{{data.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label>Category</label>
+            <select class="form-control form-control-sm" [(ngModel)]="selectedCategoryId" (change)="onChange_Category($event)">
+                <option value="-1">-- Please Select --</option>
+                <option *ngFor="let data of categories; index as i;" [value]="data.id">{{data.name}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label>Value</label>
+            <select class="form-control form-control-sm" [(ngModel)]="inputValue" (change)="onChange_Value($event)">
+                <option value="null">-- Please Select --</option>
+                <option *ngFor="let data of values; index as i;" [value]="data.id">{{data.description}}</option>
+            </select>
+        </div>
+    </div>
+</div>

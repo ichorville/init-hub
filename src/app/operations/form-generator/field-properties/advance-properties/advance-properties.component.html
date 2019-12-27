@@ -1,0 +1,45 @@
+<div *ngIf="widget" [ngSwitch]="widget.content">
+    <app-text-box *ngSwitchCase="'textBox'" [widget]="widget"></app-text-box>
+
+    <app-text-area *ngSwitchCase="'textArea'" [widget]="widget"></app-text-area>
+
+    <app-color *ngSwitchCase="'color'" [widget]="widget"></app-color>
+
+    <app-date *ngSwitchCase="'date'" [widget]="widget"></app-date>
+
+    <app-email *ngSwitchCase="'email'" [widget]="widget"></app-email>
+
+    <app-image *ngSwitchCase="'image'" [widget]="widget"></app-image>
+
+    <app-image-upload *ngSwitchCase="'imageUpload'" [widget]="widget"></app-image-upload>
+
+    <app-image-annotator *ngSwitchCase="'imageAnnotator'" [widget]="widget"></app-image-annotator>
+
+    <app-number *ngSwitchCase="'number'" [widget]="widget"></app-number>
+
+    <app-password *ngSwitchCase="'password'" [widget]="widget"></app-password>
+
+    <app-dropdown *ngSwitchCase="'dropdown'" [widget]="widget"></app-dropdown>
+
+    <app-radio *ngSwitchCase="'radio'" [widget]="widget"></app-radio>
+
+    <app-checkbox *ngSwitchCase="'checkbox'" [widget]="widget"></app-checkbox>
+
+    <app-range *ngSwitchCase="'range'" [widget]="widget"></app-range>
+
+    <app-tabular-entry *ngSwitchCase="'tabularEntry'" [widget]="widget"></app-tabular-entry>
+
+    <app-text-editor *ngSwitchCase="'textEditor'" [widget]="widget"></app-text-editor>
+
+    <app-time *ngSwitchCase="'time'" [widget]="widget"></app-time>
+
+    <app-url *ngSwitchCase="'url'" [widget]="widget"></app-url>
+
+    <app-form-logo *ngSwitchCase="'formLogo'" [widget]="widget"></app-form-logo>
+
+    <app-custom-text *ngSwitchCase="'customText'" [widget]="widget"></app-custom-text>
+
+    <div style="width: 100%;" *ngSwitchDefault>
+        <p style="text-align: center">No properties found for this field.</p>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+label {
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.selected-level{
+    color:green;
+    text-decoration: underline;
+}
+:host /deep/ ngx-treeview  div   div.treeview-container{
+            overflow-y: unset!important;       
+ } 
+ .fa-circle{
+     font-size: 6px;
+ }

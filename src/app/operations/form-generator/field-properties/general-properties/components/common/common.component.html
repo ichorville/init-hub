@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-12" *ngIf="checkVisibility('label')">
+    <label class="mat-b0">Label Name</label>
+    <input
+      class="form-control"
+      value=""
+      [(ngModel)]="currentWidget.label"
+      (ngModelChange)="onLabelChanged($event)"
+      [disabled]="!currentWidget.isNewField">
+  </div>
+  <div class="col-md-12" *ngIf="checkVisibility('placeholder')">
+    <label class="mat-b0">Placeholder</label>
+    <input
+      class="form-control"
+      value=""
+      [(ngModel)]="currentWidget.placeholder">
+  </div>
+</div>

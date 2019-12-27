@@ -1,0 +1,12 @@
+<div>
+</div>
+
+<div class="action-selector-cont p-1">
+
+	<div class="action-list">
+		<div class="action-item" *ngFor="let action of actions; index as i;" (click)="onClick_Action(i, action)" [ngClass]="classSelectedItem(i, action)">
+			{{action.typeDesc}}
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,10 @@
+<div class="field-box-container">
+  <div *ngFor="let group of fieldByGroups;">
+    <p>{{group.name}}</p>
+    <ul class="field-box-list">
+      <li class="field-box-item" *ngFor="let field of group.fields" (click)="fieldOnClick(field)">
+        <span>{{field.viewValue}}</span>
+      </li>
+    </ul>
+  </div>
+</div>

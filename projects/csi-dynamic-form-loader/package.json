@@ -1,0 +1,20 @@
+{
+  "name": "@csi/csi-dynamic-form-loader",
+  "version": "1.0.0",
+  "maintainers": [
+    {
+      "name": "Mohamed Ansaf",
+      "email": "mohamed.ansaf@cloudsolution-sa.com"
+    }
+  ],
+  "author": {
+    "name": "Cloud Solution International (PVT) Ltd"
+  },
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
+  },
+  "dependencies": {
+    "@csi/csi-dynamic-form": "latest"
+  }
+}
